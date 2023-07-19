@@ -1,10 +1,10 @@
 from random import *
 from time import *
+from turtle import *
 import base64
 import pelmen_fun
 import requests
 import string
-import turtle
 devcount = 0 
 def get_weather(city):
             api_key = '9f847b92b31f51a681d9792e18973c03'
@@ -68,7 +68,7 @@ while ipt != 0:
         if price != count:
             print("Повезет в другой раз!")
     elif ipt == 4:
-        print("Чатбот projectpb(Пельмень). Версия 1.5.0 от 16.07.23. Все права съедены шлепой. 10,13,14 пункты взяты из интернета, я не писал их сам.")
+        print("Чатбот projectpb(Пельмень). Версия 1.5.0 от 19.07.23. Все права съедены шлепой. 6,10 пункты взяты из интернета, я не писал их сам.")
     elif ipt == 5:
         pelmen_fun.info()
     elif ipt == 999:
@@ -116,7 +116,24 @@ while ipt != 0:
             print("Слишком короткий пароль! Рекомендую заменить на более надежный!")
     elif ipt == 12:
             pelmen_fun.knb() 
-    # elif ipt == 13:
+    elif ipt == 13:
+        hideturtle()
+        def fun1():
+            color("blue")
+            pensize(2)
+            speed(15)
+            for i in range(36):
+                color("blue")
+                bebra()
+                left(10)
+                color("green")
+                bebra()
+                left(10)
+        def bebra():
+            for i in range(1):
+                forward(100)
+                left(120)
+        fun1()
     else: 
         print("Прости, я тебя не понял:(")
     ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
