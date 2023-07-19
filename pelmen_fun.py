@@ -1,4 +1,6 @@
 from random import *
+import requests
+import string
 def eda():
     per1 = input("Еда - это вкусно! И это точно! Советую поесть, нехотите? Введите 1 чтобы заказать еду, и 0 если вы не хотите:")
     if per1 == "1":
@@ -83,3 +85,23 @@ def knb():
                 per1 = "бумага, ничья!"
             print(per1)
             khbi = int(input("Камень(1) ножницы(2) или бумага?(3) (0-выход)"))
+def get_weather(city):
+            api_key = '9f847b92b31f51a681d9792e18973c03'
+            base_url = 'https://api.openweathermap.org/data/2.5/weather'
+            params = {
+                'q': city,
+                'appid': api_key,
+                'units': 'metric'
+            }
+            response = requests.get(base_url, params=params)
+            weather_data = response.json()
+            if weather_data['cod'] == 200:
+                temperature = weather_data['main']['temp']
+                description = weather_data['weather'][0]['description']
+                return f"Температура в городе {city}: {temperature}°C, {description}"
+            else:
+                return "Не удалось получить данные о погоде"
+def generate_password(length=8):
+    characters = string.ascii_letters + string.digits + string.punctuation
+    password = ''.join(choice(characters) for _ in range(length))
+    return password

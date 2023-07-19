@@ -3,25 +3,7 @@ from time import *
 from turtle import *
 import base64
 import pelmen_fun
-import requests
-import string
 devcount = 0 
-def get_weather(city):
-            api_key = '9f847b92b31f51a681d9792e18973c03'
-            base_url = 'https://api.openweathermap.org/data/2.5/weather'
-            params = {
-                'q': city,
-                'appid': api_key,
-                'units': 'metric'
-            }
-            response = requests.get(base_url, params=params)
-            weather_data = response.json()
-            if weather_data['cod'] == 200:
-                temperature = weather_data['main']['temp']
-                description = weather_data['weather'][0]['description']
-                return f"Температура в городе {city}: {temperature}°C, {description}"
-            else:
-                return "Не удалось получить данные о погоде"
 def devmode(devcount):
     if devcount == 1:
         print("<<<Dev Mode>>>")
@@ -34,13 +16,9 @@ def devmode(devcount):
             print(i)
     if devcount != 1:
         print("Blocked!!")
-def generate_password(length=8):
-    characters = string.ascii_letters + string.digits + string.punctuation
-    password = ''.join(choice(characters) for _ in range(length))
-    return password
 def main():
     length = int(input("Введите длину пароля: "))
-    password = generate_password(length)
+    password = pelmen_fun.generate_password(length)
     print("Сгенерированный пароль:", password)
 print("Привет! Это Project PelmenBot! Мои функции: \n1-заказ еды \n2-погода(ненастоящая) \n3-розыгрыш \n4-о чатботе \n5-что нового? \n6-погода \n7-секудомер \n8-таймер обратного отсчета \n9-генератор цифр \n10-шифратор паролей в base64 \n11-проверка длинны пароля \n12-игра КНБ \n13-тест\nВыбирай цифру!")
 ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
@@ -82,7 +60,7 @@ while ipt != 0:
             print("Blocked!!")
     elif ipt == 6:
         city = input("Введите название города: ")
-        weather = get_weather(city)
+        weather = pelmen_fun.get_weather(city)
         print(weather)
     elif ipt == 7:
         sec_start = int(input("1 - запустить таймер, 0 - выйти"))
