@@ -130,9 +130,8 @@ while ipt != 0:
                 bebra()
                 left(10)
         def bebra():
-            for i in range(1):
-                forward(100)
-                left(120)
+            forward(100)
+            left(120)
         fun1()
     else: 
         print("Прости, я тебя не понял:(")
