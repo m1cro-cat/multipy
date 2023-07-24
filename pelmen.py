@@ -111,6 +111,82 @@ while ipt != 0:
             forward(100)
             left(120)
         fun1()
+    elif ipt == 14:
+        ran1 = randint(1,9)
+        ran2 = randint(1,9)
+        if ran1 == 1:
+            color1 = "blue"
+        if ran1 == 2:
+            color1 = "yellow"
+        if ran1 == 3:
+            color1 = "green"
+        if ran1 == 4:
+            color1 = "red"
+        if ran1 == 5:
+            color1 = "coral"
+        if ran1 == 6:
+            color1 = "cyan"
+        if ran1 == 7:
+            color1 = "pink"
+        if ran1 == 8:
+            color1 = "darkgreen"
+        if ran1 == 9:
+            color1 = "blueviolet"
+        def fun1(color1, ran2):
+            color(color1)
+            if ran2 == 1:
+                circle(20)
+            if ran2 == 2:
+                begin_fill()
+                circle(20)
+                end_fill
+            if ran2 == 3:
+                forward(30)
+            if ran2 == 4:
+                left(90)
+            if ran2 == 5:
+                for i in range(4):
+                    forward(100)
+                    left(90)
+            if ran2 == 6:
+                circle(100)
+            if ran2 == 7:
+                begin_fill()
+                circle(20)
+                x = 0
+                y = 0
+                y += 20
+                goto(x, y)
+            if ran2 == 8:
+                per11 = 0
+                for i in range(26):
+                    forward(per11)  
+                    per11 += 5
+                    left(90) 
+            if ran2 == 9:
+                circle(20)
+        for i in range(20):
+            ran1 = randint(1,9)
+            ran2 = randint(1,9)
+            if ran1 == 1:
+                color1 = "blue"
+            if ran1 == 2:
+                color1 = "yellow"
+            if ran1 == 3:
+                color1 = "green"
+            if ran1 == 4:
+                color1 = "red"
+            if ran1 == 5:
+                color1 = "coral"
+            if ran1 == 6:
+                color1 = "cyan"
+            if ran1 == 7:
+                color1 = "pink"
+            if ran1 == 8:
+                color1 = "darkgreen"
+            if ran1 == 9:
+                color1 = "blueviolet"
+            fun1(color1, ran2)
     else: 
         print("Прости, я тебя не понял:(")
     ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
