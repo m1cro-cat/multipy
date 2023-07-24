@@ -113,41 +113,61 @@ while ipt != 0:
         fun1()
     elif ipt == 14:
         def fun1(color1, ran2):
+            ran3 = randint(10, 200)
+            speed(10)
             color(color1)
             if ran2 == 1:
-                circle(20)
+                circle(ran3)
+                penup()
+                goto(randint(-200, 200), randint(-200, 200))
+                pendown()
             if ran2 == 2:
                 begin_fill()
-                circle(20)
+                circle(60)
                 end_fill
+                penup()
+                goto(randint(-200, 200), randint(-200, 200))
+                pendown()
             if ran2 == 3:
                 forward(30)
+                penup()
+                goto(randint(-200, 200), randint(-200, 200))
+                pendown()
             if ran2 == 4:
                 left(90)
             if ran2 == 5:
                 for i in range(4):
                     forward(100)
                     left(90)
+                penup()
+                goto(randint(-200, 200), randint(-200, 200))
+                pendown()
             if ran2 == 6:
-                circle(100)
+                circle(ran3)
+                penup()
+                goto(randint(-200, 200), randint(-200, 200))
+                pendown()
             if ran2 == 7:
-                for i in range(5):
-                    begin_fill()
-                    circle(20)
-                    x = 0
-                    y = 0
-                    y += 20
-                    goto(x, y)
-                    end_fill()
+                for i in range(3):
+                    forward(ran3)
+                    left(120)
             if ran2 == 8:
                 per11 = 0
-                for i in range(26):
+                for i in range(13):
                     forward(per11)  
                     per11 += 5
                     left(90) 
+                penup()
+                goto(randint(-200, 200), randint(-200, 200))
+                pendown()
             if ran2 == 9:
-                circle(20)
-        for i in range(20):
+                circle(ran3)
+                penup()
+                goto(randint(-200, 200), randint(-200, 200))
+                pendown()
+            if ran2 == 10:
+                forward(100)
+        while True:
             ran1 = randint(1,9)
             ran2 = randint(1,9)
             if ran1 == 1:
