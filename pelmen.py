@@ -4,6 +4,20 @@ from turtle import *
 import base64
 import pelmen_fun
 devcount = 0 
+def fun1():
+            color("blue")
+            pensize(2)
+            speed(15)
+            for i in range(20):
+                color("blue")
+                bebra()
+                left(10)
+                color("green")
+                bebra()
+                left(10)
+def bebra():
+    forward(100)
+    left(120)
 def devmode(devcount):
     if devcount == 1:
         print("<<<Dev Mode>>>")
@@ -96,46 +110,44 @@ while ipt != 0:
             pelmen_fun.knb() 
     elif ipt == 13:
         hideturtle()
-        def fun1():
-            color("blue")
-            pensize(2)
-            speed(15)
-            for i in range(36):
-                color("blue")
-                bebra()
-                left(10)
-                color("green")
-                bebra()
-                left(10)
-        def bebra():
-            forward(100)
-            left(120)
         fun1()
     elif ipt == 14:
-        def fun1(color1, ran2):
+        def fun2(color1, ran2):
+            pensize(randint(1,10))
             ran3 = randint(10, 200)
             speed(10)
             color(color1)
             if ran2 == 1:
+                #круг 1
                 circle(ran3)
                 penup()
                 goto(randint(-200, 200), randint(-200, 200))
                 pendown()
             if ran2 == 2:
+                # круг с заливкой
                 begin_fill()
-                circle(60)
+                circle(ran3)
                 end_fill
                 penup()
                 goto(randint(-200, 200), randint(-200, 200))
                 pendown()
             if ran2 == 3:
-                forward(30)
+                # звезда
+                pensize(2)
+                color("darkblue")
+                begin_fill()
+                for i in range(5):
+                    forward(150)
+                    left(144)
+                end_fill()
                 penup()
                 goto(randint(-200, 200), randint(-200, 200))
                 pendown()
             if ran2 == 4:
+                # поворот на 90
                 left(90)
             if ran2 == 5:
+                # квадрат
                 for i in range(4):
                     forward(100)
                     left(90)
@@ -143,15 +155,18 @@ while ipt != 0:
                 goto(randint(-200, 200), randint(-200, 200))
                 pendown()
             if ran2 == 6:
+                # круг 2
                 circle(ran3)
                 penup()
                 goto(randint(-200, 200), randint(-200, 200))
                 pendown()
             if ran2 == 7:
+                # треугольник
                 for i in range(3):
                     forward(ran3)
                     left(120)
             if ran2 == 8:
+                # спираль
                 per11 = 0
                 for i in range(13):
                     forward(per11)  
@@ -161,15 +176,20 @@ while ipt != 0:
                 goto(randint(-200, 200), randint(-200, 200))
                 pendown()
             if ran2 == 9:
+                # круг 3
                 circle(ran3)
                 penup()
                 goto(randint(-200, 200), randint(-200, 200))
                 pendown()
             if ran2 == 10:
-                forward(100)
+                # какая то фигня
+                fun1()
+                penup()
+                goto(randint(-200, 200), randint(-200, 200))
+                pendown()
         while True:
             ran1 = randint(1,9)
-            ran2 = randint(1,9)
+            ran2 = randint(1,10)
             if ran1 == 1:
                 color1 = "blue"
             if ran1 == 2:
@@ -188,7 +208,7 @@ while ipt != 0:
                 color1 = "darkgreen"
             if ran1 == 9:
                 color1 = "blueviolet"
-            fun1(color1, ran2)
+            fun2(color1, ran2)
     else: 
         print("Прости, я тебя не понял:(")
     ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
