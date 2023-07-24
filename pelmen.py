@@ -112,26 +112,6 @@ while ipt != 0:
             left(120)
         fun1()
     elif ipt == 14:
-        ran1 = randint(1,9)
-        ran2 = randint(1,9)
-        if ran1 == 1:
-            color1 = "blue"
-        if ran1 == 2:
-            color1 = "yellow"
-        if ran1 == 3:
-            color1 = "green"
-        if ran1 == 4:
-            color1 = "red"
-        if ran1 == 5:
-            color1 = "coral"
-        if ran1 == 6:
-            color1 = "cyan"
-        if ran1 == 7:
-            color1 = "pink"
-        if ran1 == 8:
-            color1 = "darkgreen"
-        if ran1 == 9:
-            color1 = "blueviolet"
         def fun1(color1, ran2):
             color(color1)
             if ran2 == 1:
@@ -151,12 +131,14 @@ while ipt != 0:
             if ran2 == 6:
                 circle(100)
             if ran2 == 7:
-                begin_fill()
-                circle(20)
-                x = 0
-                y = 0
-                y += 20
-                goto(x, y)
+                for i in range(5):
+                    begin_fill()
+                    circle(20)
+                    x = 0
+                    y = 0
+                    y += 20
+                    goto(x, y)
+                    end_fill()
             if ran2 == 8:
                 per11 = 0
                 for i in range(26):
