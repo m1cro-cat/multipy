@@ -98,28 +98,17 @@ while ipt != 0:
         print("error!")
     elif ipt == 14:
         def fun1():
-            color("blue")
+            colormode(255)
+            r = randint(0, 255)
+            g = randint(0, 255)
+            b = randint(0, 255)
+            color1 = (r, g, b)
+            r = randint(0, 255)
+            g = randint(0, 255)
+            b = randint(0, 255)
+            color2 = (r, g, b)
             pensize(2)
             speed(15)
-            ran1 = randint(1,9)
-            if ran1 == 1:
-                color2 = "blue"
-            if ran1 == 2:
-                color2 = "yellow"
-            if ran1 == 3:
-                color2 = "green"
-            if ran1 == 4:
-                color2 = "red"
-            if ran1 == 5:
-                color2 = "coral"
-            if ran1 == 6:
-                color2 = "cyan"
-            if ran1 == 7:
-                color2 = "pink"
-            if ran1 == 8:
-                color2 = "darkgreen"
-            if ran1 == 9:
-                color2 = "blueviolet"
             for i in range(20):
                 color(color1)
                 bebra()
@@ -130,11 +119,13 @@ while ipt != 0:
         def bebra():
             forward(100)
             left(120)
-        def fun2(color1, ran2):
+        def fun2(color1):
             pensize(randint(1,10))
             ran3 = randint(10, 200)
+            ran2 = randint(1,10)
             speed(10)
-            color(color1)
+            colormode(255)
+            pencolor(color1)
             if ran2 == 1:
                 #круг 1
                 circle(ran3)
@@ -207,27 +198,11 @@ while ipt != 0:
                 goto(randint(-200, 200), randint(-200, 200))
                 pendown()
         while True:
-            ran1 = randint(1,9)
-            ran2 = randint(1,10)
-            if ran1 == 1:
-                color1 = "blue"
-            if ran1 == 2:
-                color1 = "yellow"
-            if ran1 == 3:
-                color1 = "green"
-            if ran1 == 4:
-                color1 = "red"
-            if ran1 == 5:
-                color1 = "coral"
-            if ran1 == 6:
-                color1 = "cyan"
-            if ran1 == 7:
-                color1 = "pink"
-            if ran1 == 8:
-                color1 = "darkgreen"
-            if ran1 == 9:
-                color1 = "blueviolet"
-            fun2(color1, ran2)
+            r = randint(0, 255)
+            g = randint(0, 255)
+            b = randint(0, 255)
+            color1 = (r, g, b)
+            fun2(color1)
     else: 
         print("Прости, я тебя не понял:(")
     ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
