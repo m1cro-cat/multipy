@@ -4,20 +4,6 @@ from turtle import *
 import base64
 import pelmen_fun
 devcount = 0 
-def fun1():
-            color("blue")
-            pensize(2)
-            speed(15)
-            for i in range(20):
-                color("blue")
-                bebra()
-                left(10)
-                color("green")
-                bebra()
-                left(10)
-def bebra():
-    forward(100)
-    left(120)
 def devmode(devcount):
     if devcount == 1:
         print("<<<Dev Mode>>>")
@@ -109,9 +95,41 @@ while ipt != 0:
     elif ipt == 12:
             pelmen_fun.knb() 
     elif ipt == 13:
-        hideturtle()
-        fun1()
+        print("error!")
     elif ipt == 14:
+        def fun1():
+            color("blue")
+            pensize(2)
+            speed(15)
+            ran1 = randint(1,9)
+            if ran1 == 1:
+                color2 = "blue"
+            if ran1 == 2:
+                color2 = "yellow"
+            if ran1 == 3:
+                color2 = "green"
+            if ran1 == 4:
+                color2 = "red"
+            if ran1 == 5:
+                color2 = "coral"
+            if ran1 == 6:
+                color2 = "cyan"
+            if ran1 == 7:
+                color2 = "pink"
+            if ran1 == 8:
+                color2 = "darkgreen"
+            if ran1 == 9:
+                color2 = "blueviolet"
+            for i in range(20):
+                color(color1)
+                bebra()
+                left(10)
+                color(color2)
+                bebra()
+                left(10)
+        def bebra():
+            forward(100)
+            left(120)
         def fun2(color1, ran2):
             pensize(randint(1,10))
             ran3 = randint(10, 200)
@@ -127,14 +145,14 @@ while ipt != 0:
                 # круг с заливкой
                 begin_fill()
                 circle(ran3)
-                end_fill
+                end_fill()
                 penup()
                 goto(randint(-200, 200), randint(-200, 200))
                 pendown()
             if ran2 == 3:
                 # звезда
                 pensize(2)
-                color("darkblue")
+                color(color1)
                 begin_fill()
                 for i in range(5):
                     forward(150)
@@ -168,7 +186,8 @@ while ipt != 0:
             if ran2 == 8:
                 # спираль
                 per11 = 0
-                for i in range(13):
+                pensize(randint(4, 10))
+                for i in range(randint(10, 36)):
                     forward(per11)  
                     per11 += 5
                     left(90) 
