@@ -98,17 +98,10 @@ while ipt != 0:
         print("error!")
     elif ipt == 14:
         def fun1():
-            colormode(255)
-            r = randint(0, 255)
-            g = randint(0, 255)
-            b = randint(0, 255)
-            color1 = (r, g, b)
             r = randint(0, 255)
             g = randint(0, 255)
             b = randint(0, 255)
             color2 = (r, g, b)
-            pensize(2)
-            speed(15)
             for i in range(20):
                 color(color1)
                 bebra()
@@ -120,10 +113,16 @@ while ipt != 0:
             forward(100)
             left(120)
         def fun2(color1):
-            pensize(randint(1,10))
+            colormode(255)
+            r = randint(0, 255)
+            g = randint(0, 255)
+            b = randint(0, 255)
+            color1 = (r, g, b)
+            pensize(2)
+            speed(15)
+            pensize(randint(4, 10))
             ran3 = randint(10, 200)
             ran2 = randint(1,10)
-            speed(10)
             colormode(255)
             pencolor(color1)
             if ran2 == 1:
@@ -177,7 +176,6 @@ while ipt != 0:
             if ran2 == 8:
                 # спираль
                 per11 = 0
-                pensize(randint(4, 10))
                 for i in range(randint(10, 36)):
                     forward(per11)  
                     per11 += 5
