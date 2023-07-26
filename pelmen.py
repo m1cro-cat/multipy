@@ -119,7 +119,7 @@ while ipt != 0:
             b = randint(0, 255)
             color1 = (r, g, b)
             pensize(2)
-            speed(15)
+            speed(10)
             pensize(randint(4, 10))
             ran3 = randint(10, 200)
             ran2 = randint(1,10)
