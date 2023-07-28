@@ -3,30 +3,19 @@ from time import *
 from turtle import *
 import base64
 import pelmen_fun
-devcount = 0 
-def devmode(devcount):
-    if devcount == 1:
-        print("<<<Dev Mode>>>")
-        print("Тут я тестирую разное что добавляю ;)")
-        print("Доступны: ультра быстрый таймер")
-        per2 = int(input("Что выбираете?"))
-        if per2 == 1:
-            timer1 = int(input("УЛЬТРА Таймер обратного отсчета. Введите секунды."))
-        for i in range(timer1, -1, -1):
-            print(i)
-    if devcount != 1:
-        print("Blocked!!")
 def main():
     length = int(input("Введите длину пароля: "))
     password = pelmen_fun.generate_password(length)
     print("Сгенерированный пароль:", password)
-print("Привет! Это Project PelmenBot! Мои функции: \n1-заказ еды \n2-погода(ненастоящая) \n3-розыгрыш \n4-о чатботе \n5-что нового? \n6-погода \n7-секудомер \n8-таймер обратного отсчета \n9-генератор цифр \n10-шифратор паролей в base64 \n11-проверка длинны пароля \n12-игра КНБ \n13-тест рисунка \n14-Генератор картинок(сам по себе)\nВыбирай цифру!")
+print("Привет! Это Project PelmenBot! Мои функции: \n1-посмотреть старые функции \n2-пусто \n3- игра угадай число \n4-о чатботе \n5-что нового? \n6-погода \n7-секудомер \n8-таймер обратного отсчета \n9-генератор цифр \n10-шифратор паролей в base64 \n11-проверка длинны пароля \n12-игра КНБ \n13-бросить кубик \n14-Генератор картинок(сам по себе)\nВыбирай цифру!")
 ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
 while ipt != 0:
     if ipt == 1:
-        pelmen_fun.eda()
-    elif ipt == 2:
-        pelmen_fun.pogod()
+        ipt2 = int(input("У нас есть: 1 - старый заказ еды. 2 - старая погода. Выбирай!"))
+        if ipt2 == 1:
+            pelmen_fun.eda()
+        elif ipt2 == 2:
+            pelmen_fun.pogod()
     elif ipt == 3:
         print("Угадайте число от 1 до 100!")
         count = randint(1,100)
@@ -46,18 +35,9 @@ while ipt != 0:
         if price != count:
             print("Повезет в другой раз!")
     elif ipt == 4:
-        print("Чатбот projectpb(Пельмень). Версия 1.5.0 от 19.07.23. Все права съедены шлепой. 6,10 пункты взяты из интернета, я не писал их сам.")
+        print("Программа projectpb(Пельмень). Версия 2.0.0 от 28.07.23. Все права съедены шлепой. Некоторые пункты взяты из интернета, я не писал их сам.")
     elif ipt == 5:
         pelmen_fun.info()
-    elif ipt == 999:
-        if devcount == 0:
-            devcount += 1
-            print("ok!")
-            per2 = int(input("Войти в режим разработчика? 1 or 0"))
-            if per2 == 1:
-                devmode(devcount)
-        if devcount != 1:
-            print("Blocked!!")
     elif ipt == 6:
         city = input("Введите название города: ")
         weather = pelmen_fun.get_weather(city)
@@ -90,12 +70,10 @@ while ipt != 0:
     elif ipt == 11:
         per3 = input("Введите пароль: ")
         print("Длинна пароля:", len(per3))
-        if len(per3) < 8:
-            print("Слишком короткий пароль! Рекомендую заменить на более надежный!")
     elif ipt == 12:
             pelmen_fun.knb() 
     elif ipt == 13:
-        print("error!")
+        print("Вам выпало", randint(1,6))
     elif ipt == 14:
         def fun1():
             r = randint(0, 255)
@@ -201,6 +179,8 @@ while ipt != 0:
             b = randint(0, 255)
             color1 = (r, g, b)
             fun2(color1)
+    elif ipt == "?":
+        print("Мои функции: \n1-посмотреть старые функции \n2-пусто \n3- игра угадай число \n4-о чатботе \n5-что нового? \n6-погода \n7-секудомер \n8-таймер обратного отсчета \n9-генератор цифр \n10-шифратор паролей в base64 \n11-проверка длинны пароля \n12-игра КНБ \n13-бросить кубик \n14-Генератор картинок(сам по себе)\nВыбирай цифру!")
     else: 
         print("Прости, я тебя не понял:(")
     ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
