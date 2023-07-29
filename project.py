@@ -78,27 +78,28 @@ while ipt != 0:
             color2 = (r, g, b)
             for i in range(20):
                 color(color1)
-                bebra()
+                forward(100)
+                left(120)
                 left(10)
                 color(color2)
-                bebra()
-                left(10)
-        def bebra():
-            forward(100)
-            left(120)
+                forward(100)
+                left(120)
+                left(10)  
         def fun2(color1):
+            # задаю цвет
             colormode(255)
             r = randint(0, 255)
             g = randint(0, 255)
             b = randint(0, 255)
             color1 = (r, g, b)
-            pensize(2)
+            pencolor(color1)
+            #скорость
             speed(10)
+            # генерация 
             pensize(randint(4, 10))
             ran3 = randint(10, 200)
             ran2 = randint(1,11)
-            colormode(255)
-            pencolor(color1)
+            # рандомные координаты
             penup()
             goto(randint(-200, 200), randint(-200, 200))
             pendown()
@@ -112,8 +113,6 @@ while ipt != 0:
                 end_fill()
             if ran2 == 3:
                 # звезда
-                pensize(2)
-                color(color1)
                 begin_fill()
                 for i in range(5):
                     forward(150)
