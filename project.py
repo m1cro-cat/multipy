@@ -99,20 +99,17 @@ while ipt != 0:
             ran2 = randint(1,11)
             colormode(255)
             pencolor(color1)
+            penup()
+            goto(randint(-200, 200), randint(-200, 200))
+            pendown()
             if ran2 == 1:
                 #круг 1
                 circle(ran3)
-                penup()
-                goto(randint(-200, 200), randint(-200, 200))
-                pendown()
             if ran2 == 2:
-                # круг с заливкой
+                # круг с заливкой 1
                 begin_fill()
                 circle(ran3)
                 end_fill()
-                penup()
-                goto(randint(-200, 200), randint(-200, 200))
-                pendown()
             if ran2 == 3:
                 # звезда
                 pensize(2)
@@ -122,9 +119,6 @@ while ipt != 0:
                     forward(150)
                     left(144)
                 end_fill()
-                penup()
-                goto(randint(-200, 200), randint(-200, 200))
-                pendown()
             if ran2 == 4:
                 # поворот на 90
                 left(90)
@@ -133,15 +127,9 @@ while ipt != 0:
                 for i in range(4):
                     forward(100)
                     left(90)
-                penup()
-                goto(randint(-200, 200), randint(-200, 200))
-                pendown()
             if ran2 == 6:
                 # круг 2
                 circle(ran3)
-                penup()
-                goto(randint(-200, 200), randint(-200, 200))
-                pendown()
             if ran2 == 7:
                 # треугольник
                 for i in range(3):
@@ -154,23 +142,14 @@ while ipt != 0:
                     forward(per11)  
                     per11 += 5
                     left(90) 
-                penup()
-                goto(randint(-200, 200), randint(-200, 200))
-                pendown()
             if ran2 == 9:
                 # круг с заливкой 2 
-                circle(ran3)
-                penup()
                 begin_fill()
-                goto(randint(-200, 200), randint(-200, 200))
+                circle(ran3)
                 end_fill()
-                pendown()
             if ran2 == 10:
                 # какая то фигня
                 fun1()
-                penup()
-                goto(randint(-200, 200), randint(-200, 200))
-                pendown()
             if ran2 == 11:
                 left(randint(0,360))
                 for i in range(2):
