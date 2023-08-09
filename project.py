@@ -3,7 +3,7 @@ from time import *
 from turtle import *
 import base64
 import pelmen_fun
-print("Привет! Это Project PelmenBot! Мои функции: \n1-посмотреть старые функции \n2-тест \n3- игра угадай число \n4-о чатботе \n5-что нового? \n6-погода \n7-секудомер \n8-таймер обратного отсчета \n9-генератор цифр \n10-шифратор паролей в base64 \n11-проверка длинны пароля \n12-игра КНБ \n13-бросить кубик \n14-Генератор фигур\nВыбирай цифру!")
+print("Привет! Это Project PelmenBot! Мои функции: \n1-посмотреть старые функции \n2-таймер обратного отчета \n3- игра угадай число \n4-о чатботе \n5-что нового? \n6-погода \n7-секудомер \n8-генератор \n9-пусто( \n10-тоже пусто( \n11-base64 \n12-игра КНБ \n13-бросить кубик \n14-Генератор фигур \n15-узнать длинну строки\nВыбирай цифру!")
 ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
 while ipt != 0:
     if ipt == 1:
@@ -31,7 +31,7 @@ while ipt != 0:
         if price != count:
             print("Повезет в другой раз!")
     elif ipt == 4:
-        print("Программа projectpb(Пельмень). Версия 2.0.1 от 01.08.23. Все права съедены шлепой. Некоторые пункты взяты из интернета, я не писал их сам.")
+        print("Программа projectpb(Пельмень). Версия 2.1.0 от 09.08.23. Все права съедены шлепой. Некоторые пункты взяты из интернета, я не писал их сам.")
     elif ipt == 5:
         pelmen_fun.info()
     elif ipt == 6:
@@ -46,24 +46,27 @@ while ipt != 0:
             end = time()
             total_time = (end - start)
             print("Время -",round(total_time, 3))
-    elif ipt == 8:
+    elif ipt == 2:
         timer1 = int(input("Таймер обратного отсчета. Введите секунды."))
         for i in range(timer1, -1, -1):
             print(i)
             sleep(1)
-    elif ipt == 9:
-        passw = "0"
-        gen_ipt = int(input("Введите длинну пароля:"))
-        for i in range(gen_ipt):
-            passw += str(randint(0,9))
-        print("Ваш пароль:", passw)
     elif ipt == 10:
-        q = input("Введите пароль: ")
-        b = q.encode("UTF-8")
-        e = base64.b64encode(b)
-        s1 = e.decode("UTF-8")
-        print(s1)
+        print("пусто")
     elif ipt == 11:
+        q = int(input("1 - зашифровать, 2 - расшифровать: "))
+        if q == 2:
+            encoded_string = input("Введите строку для расшифрования: ")
+            decoded_bytes = base64.b64decode(encoded_string)
+            decoded_string = decoded_bytes.decode("utf-8")
+            print(decoded_string)
+        if q == 1:
+            q = input("Введите строку для шифрования: ")
+            b = q.encode("UTF-8")
+            e = base64.b64encode(b)
+            s1 = e.decode("UTF-8")
+            print(s1)
+    elif ipt == 15:
         per3 = input("Введите пароль: ")
         print("Длинна пароля:", len(per3))
     elif ipt == 12:
@@ -163,10 +166,53 @@ while ipt != 0:
             b = randint(0, 255)
             color1 = (r, g, b)
             fun2(color1)
-    elif ipt == "?":
-        print("Мои функции: \n1-посмотреть старые функции \n2-пусто \n3- игра угадай число \n4-о чатботе \n5-что нового? \n6-погода \n7-секудомер \n8-таймер обратного отсчета \n9-генератор цифр \n10-шифратор паролей в base64 \n11-проверка длинны пароля \n12-игра КНБ \n13-бросить кубик \n14-Генератор картинок(сам по себе)\nВыбирай цифру!")
-    elif ipt == 2:
-        print("пока тут пусто")
+    elif ipt == 8:
+        per1 = int(input("1 - генератор букв, 2 - генератор цифр, 3 - генератор пароля(буквы + цифры): "))
+        if per1 == 1:
+            per2 = ""
+            dsds = int(input("Введите длинну: "))
+            alfeu = "abcdefghijklmnopqrstuvwxyz"
+            alfru = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+            gdh = input("А какой язык? eu / ru / all? ").lower()
+            if gdh == "ru":
+                alf = alfru
+            if gdh == "eu":
+                alf = alfeu
+            if gdh == "all":
+                alf = ""
+                alf += alfru
+                alf += alfeu
+            for i in range(dsds):
+                per2 += alf[randint(0, (len(alf) - 1))]
+            print(per2)
+        if per1 == 2:
+            dsds = int(input("Введите длинну пароля: "))
+            per1 = ""
+            for i in range(dsds):
+                per1 += str(randint(0,9))
+            print(per1)
+        if per1 == 3:
+            per2 = ""
+            dsds = int(input("Введите длинну: "))
+            alfeu = "abcdefghijklmnopqrstuvwxyz"
+            alfru = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+            gdh = input("А какой язык? eu / ru / all? ").lower()
+            if gdh == "ru":
+                alf = alfru
+            if gdh == "eu":
+                alf = alfeu
+            if gdh == "all":
+                alf = ""
+                alf += alfru
+                alf += alfeu
+            for i in range(dsds):
+                per2 += alf[randint(0, (len(alf) - 1))]
+                if randint(1,3) == 1:
+                    for i in range(randint(1, 3)):
+                        per2 += str(randint(0,9))
+            print(per2)
+    elif ipt == 9:
+        print("пока тут пусто(())")
     else: 
         print("Прости, я тебя не понял:(")
     ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
