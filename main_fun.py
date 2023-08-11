@@ -1,35 +1,10 @@
 from random import *
 import requests
 import string
-def pogod():
-    osadki0 = randint(1,5)
-    temp0 = randint(1,4)
-    pogoda0 = randint(1,2)
-    if osadki0 == 1:
-        osadki1 = "дождь"
-    if osadki0 == 2:
-            osadki1 = "кислотный дождь"
-    if osadki0 == 3:
-            osadki1 = "град"
-    if osadki0 == 4:
-            osadki1 = "без осадков"
-    if osadki0 == 5:
-            osadki1 = "торнадо"
-    if temp0 == 1:
-            temp1 = "+30"
-    if temp0 == 2:
-            temp1 = "+754"
-    if temp0 == 3:
-            temp1 = "+7 -7 +15 -20 xD"
-    if temp0 == 4:
-            temp1 = "-195.. Кто пролил жидкий азот?!?!"
-    if pogoda0 == 1:
-            pogoda1 = "Солнечно"
-    if pogoda0 == 2:
-            pogoda1 = "Пасмурно"
-    print("Сегодня",pogoda1,",",temp1,",",osadki1)
 def info():
         print("Лист обновлений!")
+        print("2.2.0 - 11.08.23")
+        print("Переименование программы \n Оптимизация кода")
         print("2.1.0 - 09.08.23")
         print("Переделка некоторых функций, и добавление новых")
         print("2.0.0 - 28.07.23")
