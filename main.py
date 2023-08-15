@@ -12,21 +12,7 @@ prt()
 ipt = int(input("Что вы хотите сделать? (Введите 0 для выхода):"))
 while ipt != 0:
     if ipt == 1:
-        def fun1():
-            r = randint(0, 255)
-            g = randint(0, 255)
-            b = randint(0, 255)
-            color2 = (r, g, b)
-            for i in range(20):
-                color(color1)
-                forward(100)
-                left(120)
-                left(10)
-                color(color2)
-                forward(100)
-                left(120)
-                left(10)  
-        def fun2(color1):
+        def paint(color1):
             # задаю цвет
             colormode(255)
             r = randint(0, 255)
@@ -90,8 +76,20 @@ while ipt != 0:
                 circle(ran3)
                 end_fill()
             if ran2 == 10:
-                # какая то фигня
-                fun1()
+                # пончик
+                r = randint(0, 255)
+                g = randint(0, 255)
+                b = randint(0, 255)
+                color2 = (r, g, b)
+                for i in range(20):
+                    color(color1)
+                    forward(100)
+                    left(120)
+                    left(10)
+                    color(color2)
+                    forward(100)
+                    left(120)
+                    left(10) 
             if ran2 == 11:
                 # ромб
                 left(randint(0,360))
@@ -105,21 +103,23 @@ while ipt != 0:
             g = randint(0, 255)
             b = randint(0, 255)
             color1 = (r, g, b)
-            fun2(color1)
+            paint(color1)
     elif ipt == 2:
-        print("Программа MultiPy. Версия 3.0.1 от 14.08.23. Некоторые пункты взяты из интернета, я не писал их сам.")
+        print("Программа MultiPy. Версия 3.0.1 от 15.08.23. Некоторые пункты взяты из интернета, я не писал их сам.")
     elif ipt == 3:
         main_fun.info()
     elif ipt == 4:
         main_fun.knb() 
     elif ipt == 5:
         c1 = 0
+        count1 = 1
         print("Угадайте число от 1 до 100!")
         count = randint(1,100)
         if randint(1,999) == 456:
             count = 2**21
         price = int(input("Введите число: "))
         while price != count:
+            count1 += 1
             c1 += 1
             if price > 101:
                 print("Сказали же, ДО 100 xD")
@@ -134,6 +134,7 @@ while ipt != 0:
                 print("Число было")
         if price == count:
                 print("Вы угадали!")
+                print("Количество попыток:", count1)
     elif ipt == 6:
         sec_start = int(input("1 - запустить секундомер, 0 - выйти: "))
         if sec_start == 1:
@@ -218,7 +219,7 @@ while ipt != 0:
             s1 = e.decode("UTF-8")
             print(s1)
     elif ipt == 13:
-        per3 = input("Введите сторку: ")
+        per3 = input("Введите строку: ")
         print("Длинна строки:", len(per3))
     elif ipt == 14:
         main_beta.beta()
