@@ -164,14 +164,11 @@ while ipt != 0:
             dsds = int(input("Введите длинну: "))
             alfeu = "abcdefghijklmnopqrstuvwxyz"
             alfru = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
-            alfch = "灭斯迪斯尼亚克图路迪斯尼亚克"
             gdh = input("А какой язык? eu / ru / all? ").lower()
             if gdh == "ru":
                 alf = alfru
             if gdh == "eu":
                 alf = alfeu
-            if gdh == "ch":
-                alf = alfch
             if gdh == "all":
                 alf = ""
                 alf += alfru

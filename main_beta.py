@@ -6,9 +6,7 @@ import base64
 import main_fun
 import main_beta
 import datetime
-def beta():
-    t1 = int(input("1 - старый бот(до переделки)"))
-    if t1 == 1:
+def old():
         print("MultiPy \n1-beta-раздел \n2-таймер обратного отчета \n3- игра угадай число \n4-о MultiPy \n5-что нового? \n6-погода \n7-секудомер \n8-генератор \n9-супербыстрый таймер обратного отсчета \n10-None \n11-base64 \n12-игра КНБ \n13-бросить кубик \n14-Генератор фигур \n15-узнать длинну строки\nВыбирай цифру!")
         ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
         while ipt != 0:
@@ -228,3 +226,15 @@ def beta():
                 print("???")
             ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
         print("exit...")
+def beta1():
+    ipt = int(input(" <<MultiPyBETA>> \n 0 - выход \n 1 - пинг: "))
+    while ipt != 0:
+        if ipt == 1:
+            i1 = input("Введите ip, или доменное имя для пинга(укажите после ip -t если надо пинговать бесконечно): ")
+            print(os.system(f"ping {i1}"))
+def beta():
+    t1 = int(input(" <<MENU>> \n 1 - старый бот(до переделки) \n 2 - бета версии новых функций: "))
+    if t1 == 1:
+        old()
+    elif t1 == 2:
+        beta1()    
