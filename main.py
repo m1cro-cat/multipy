@@ -12,70 +12,76 @@ prt()
 ipt = int(input("Что вы хотите сделать? (Введите 0 для выхода):"))
 while ipt != 0:
     if ipt == 1:
-        def paint(color1):
+        def paint():
             # задаю цвет
             colormode(255)
             r = randint(0, 255)
             g = randint(0, 255)
             b = randint(0, 255)
             color1 = (r, g, b)
-            if datetime.date.today() == datetime.date(1970, 1, 1):
-                color1 = ("#FFF")
-            pencolor(color1)
+            r = randint(0, 255)
+            g = randint(0, 255)
+            b = randint(0, 255)
+            color2 = (r, g, b)
+            color(color1, color2)
             #скорость
             speed(10)
             # генерация 
             pensize(randint(4, 10))
-            ran3 = randint(10, 200)
-            ran2 = randint(1,12)
+            cur1 = randint(10, 200)
+            ran1 = randint(1,13)
             # рандомные координаты
             penup()
-            goto(randint(-200, 200), randint(-200, 200))
+            goto(randint(-250, 250), randint(-250, 250))
             pendown()
-            if ran2 == 1:
+            if ran1 == 1:
                 #круг 1
-                circle(ran3)
-            if ran2 == 2:
+                circle(cur1)
+            if ran1 == 2:
                 # круг с заливкой 1
                 begin_fill()
-                circle(ran3)
+                circle(cur1)
                 end_fill()
-            if ran2 == 3:
+            if ran1 == 3:
                 # звезда
                 begin_fill()
                 for i in range(5):
                     forward(150)
                     left(144)
                 end_fill()
-            if ran2 == 4:
-                # поворот на 90
-                left(90)
-            if ran2 == 5:
+            if ran1 == 4:
+                # квадрат с заливкой
+                begin_fill()
+                for i in range(4):
+                    forward(100)
+                    left(90)
+                end_fill()
+            if ran1 == 5:
                 # квадрат
                 for i in range(4):
                     forward(100)
                     left(90)
-            if ran2 == 6:
+            if ran1 == 6:
                 # круг 2
-                circle(ran3)
-            if ran2 == 7:
+                circle(cur1)
+            if ran1 == 7:
                 # треугольник
                 for i in range(3):
-                    forward(ran3)
+                    forward(cur1)
                     left(120)
-            if ran2 == 8:
+            if ran1 == 8:
                 # спираль
                 per11 = 0
                 for i in range(randint(10, 36)):
                     forward(per11)  
                     per11 += 5
                     left(90) 
-            if ran2 == 9:
+            if ran1 == 9:
                 # круг с заливкой 2 
                 begin_fill()
-                circle(ran3)
+                circle(cur1)
                 end_fill()
-            if ran2 == 10:
+            if ran1 == 10:
                 # пончик
                 r = randint(0, 255)
                 g = randint(0, 255)
@@ -90,20 +96,31 @@ while ipt != 0:
                     forward(100)
                     left(120)
                     left(10) 
-            if ran2 == 11:
+            if ran1 == 11:
                 # ромб
+                ran2 = randint(50,150)
                 left(randint(0,360))
                 for i in range(2):
                     left(45)
-                    forward(100)
+                    forward(ran2)
                     left(135)
-                    forward(100)
+                    forward(ran2)
+            if ran1 == 12:
+                # шестиугольник
+                ran2 = randint(50,150)
+                for i in range(6):
+                    forward(ran2)
+                    left(60)
+            if ran1 == 13:
+                # шестиугольник с заливкой
+                ran2 = randint(50,150)
+                begin_fill()
+                for i in range(6):
+                    forward(ran2)
+                    left(60)
+                end_fill()
         while True:
-            r = randint(0, 255)
-            g = randint(0, 255)
-            b = randint(0, 255)
-            color1 = (r, g, b)
-            paint(color1)
+            paint()
     elif ipt == 2:
         print("Программа MultiPy. Версия 3.0.1 от 15.08.23. Некоторые пункты взяты из интернета, я не писал их сам.")
     elif ipt == 3:
