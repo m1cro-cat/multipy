@@ -166,7 +166,7 @@ while ipt != 0:
             print(i)
             sleep(1)
     elif ipt == 8:
-        timer1 = int(input("Супер-Таймер обратного отсчета. Введите секунды: "))
+        timer1 = int(input("Супер-Таймер обратного отсчета. Введите что либо: "))
         for i in range(timer1, -1, -1):
             print(i)
     elif ipt == 9:
