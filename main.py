@@ -123,9 +123,9 @@ try:
                 while True:
                     paint()
             except Exception:
-                print("рисовалка закрыта")
+                print("PaintGPT закрыт")
         elif ipt == 2:
-            print("Программа MultiPy. Версия 3.0.3 от 17.08.23. Некоторые пункты взяты из интернета, я не писал их сам.")
+            print("Программа MultiPy. Версия 3.0.3 от 17.08.23. Некоторые пункты взяты из интернета, я не писал их сам. Также спасибо 4vanyek на помощь в некоторых командах и моментах")
         elif ipt == 3:
             main_fun.info()
         elif ipt == 4:
@@ -248,8 +248,10 @@ try:
             print(os.system(f"ping {i1}"))
         else: 
             print("???")
-        prt()
-        ipt = int(input("Что вы хотите сделать? (Введите 0 для выхода):"))
+        ipt = input("Нажмите Enter чтобы показать меню ")
+        if ipt == "":
+            prt()
+            ipt = int(input("Что вы хотите сделать? (Введите 0 для выхода):"))
     print("exit...")
 except KeyboardInterrupt:
     print("\nexit...")
