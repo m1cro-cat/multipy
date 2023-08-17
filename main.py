@@ -158,7 +158,7 @@ while ipt != 0:
             sec_end = int(input("0 - стоп: "))
             end = time()
             total_time = (end - start)
-            print("Время -",round(total_time, 3))
+            print("Время -",round(total_time, 3)) 
     elif ipt == 7:
         timer1 = int(input("Таймер обратного отсчета. Введите секунды: "))
         for i in range(timer1, -1, -1):
