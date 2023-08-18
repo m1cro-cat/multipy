@@ -30,59 +30,66 @@ try:
                     # генерация 
                     pensize(randint(4, 10))
                     cur1 = randint(10, 200)
-                    ran1 = randint(1,13)
+                    ran1 = randint(1,9)
                     # рандомные координаты
                     penup()
                     goto(randint(-250, 250), randint(-250, 250))
                     pendown()
                     if ran1 == 1:
                         #круг 1
-                        circle(cur1)
+                        if randint(1,2) == 1:
+                            begin_fill()
+                            circle(cur1)
+                            end_fill()
+                        else:
+                            circle(cur1)
                     if ran1 == 2:
-                        # круг с заливкой 1
-                        begin_fill()
-                        circle(cur1)
-                        end_fill()
-                    if ran1 == 3:
                         # звезда
                         begin_fill()
                         for i in range(5):
                             forward(150)
                             left(144)
                         end_fill()
+                    if ran1 == 3:
+                        # квадрат 1
+                        if randint(1,2) == 1:
+                            begin_fill()
+                            for i in range(4):
+                                forward(100)
+                                left(90)
+                            end_fill()
+                        else:
+                            for i in range(4):
+                                forward(100)
+                                left(90)
                     if ran1 == 4:
-                        # квадрат с заливкой
-                        begin_fill()
-                        for i in range(4):
-                            forward(100)
-                            left(90)
-                        end_fill()
-                    if ran1 == 5:
-                        # квадрат
-                        for i in range(4):
-                            forward(100)
-                            left(90)
-                    if ran1 == 6:
                         # круг 2
-                        circle(cur1)
-                    if ran1 == 7:
+                        if randint(1,2) == 1:
+                            begin_fill()
+                            circle(cur1)
+                            end_fill()
+                        else:
+                            circle(cur1)
+                    if ran1 == 5:
                         # треугольник
-                        for i in range(3):
-                            forward(cur1)
-                            left(120)
-                    if ran1 == 8:
+                        if randint(1,2) == 1:
+                            begin_fill()
+                            for i in range(3):
+                                forward(cur1)
+                                left(120)
+                            end_fill()
+                        else:
+                            for i in range(3):
+                                forward(cur1)
+                                left(120)
+                    if ran1 == 6:
                         # спираль
                         per11 = 0
                         for i in range(randint(10, 36)):
                             forward(per11)  
                             per11 += 5
                             left(90) 
-                    if ran1 == 9:
-                        # круг с заливкой 2 
-                        begin_fill()
-                        circle(cur1)
-                        end_fill()
-                    if ran1 == 10:
+                    if ran1 == 7:
                         # пончик
                         r = randint(0, 255)
                         g = randint(0, 255)
@@ -97,7 +104,7 @@ try:
                             forward(100)
                             left(120)
                             left(10) 
-                    if ran1 == 11:
+                    if ran1 == 8:
                         # ромб
                         ran2 = randint(50,150)
                         left(randint(0,360))
@@ -106,20 +113,20 @@ try:
                             forward(ran2)
                             left(135)
                             forward(ran2)
-                    if ran1 == 12:
+                    if ran1 == 9:
                         # шестиугольник
                         ran2 = randint(50,150)
-                        for i in range(6):
-                            forward(ran2)
-                            left(60)
-                    if ran1 == 13:
-                        # шестиугольник с заливкой
-                        ran2 = randint(50,150)
-                        begin_fill()
-                        for i in range(6):
-                            forward(ran2)
-                            left(60)
-                        end_fill()
+                        if randint(1,2) == 1:
+                            for i in range(6):
+                                forward(ran2)
+                                left(60)
+                        else:
+                            ran2 = randint(50,150)
+                            begin_fill()
+                            for i in range(6):
+                                forward(ran2)
+                                left(60)
+                            end_fill()
                 while True:
                     paint()
             except Exception:
@@ -251,7 +258,7 @@ try:
         ipt = input("Нажмите Enter чтобы показать меню ")
         if ipt == "":
             prt()
-            ipt = int(input("Что вы хотите сделать? (Введите 0 для выхода):"))
+            ipt = int(input("Что вы хотите сделать? (Введите 0 или Ctrl+C для выхода): "))
     print("exit...")
 except KeyboardInterrupt:
     print("\nexit...")
