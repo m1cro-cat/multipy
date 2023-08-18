@@ -11,6 +11,8 @@ def info():
         print("Минификсы, улучшение paintgpt, других команд.")
         print("3.0.0 - 11.08.23")
         print("Полностью переписан интерфейс, улучшен код)")
+        print("2.2.1 - 11.08.23")
+        print("Финальная версия 2.x")
         print("2.2.0 - 11.08.23")
         print("Переименование программы \n Оптимизация кода")
         print("2.1.0 - 09.08.23")
@@ -73,7 +75,4 @@ def get_weather(city):
                 return f"Температура в городе {city}: {temperature}°C, {description}"
             else:
                 return "Не удалось получить данные о погоде"
-def generate_password(length=8):
-    characters = string.ascii_letters + string.digits + string.punctuation
-    password = ''.join(choice(characters) for _ in range(length))
-    return password
+

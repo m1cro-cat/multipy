@@ -30,19 +30,11 @@ try:
                     # генерация 
                     pensize(randint(4, 10))
                     cur1 = randint(10, 200)
-                    ran1 = randint(1,9)
+                    ran1 = randint(2,9)
                     # рандомные координаты
                     penup()
                     goto(randint(-250, 250), randint(-250, 250))
                     pendown()
-                    if ran1 == 1:
-                        #круг 1
-                        if randint(1,2) == 1:
-                            begin_fill()
-                            circle(cur1)
-                            end_fill()
-                        else:
-                            circle(cur1)
                     if ran1 == 2:
                         # звезда
                         begin_fill()
@@ -91,11 +83,12 @@ try:
                             left(90) 
                     if ran1 == 7:
                         # пончик
+                        speed(15)
                         r = randint(0, 255)
                         g = randint(0, 255)
                         b = randint(0, 255)
                         color2 = (r, g, b)
-                        for i in range(20):
+                        for i in range(18):
                             color(color1)
                             forward(100)
                             left(120)
@@ -104,6 +97,7 @@ try:
                             forward(100)
                             left(120)
                             left(10) 
+                        speed(10)
                     if ran1 == 8:
                         # ромб
                         ran2 = randint(50,150)
@@ -132,7 +126,8 @@ try:
             except Exception:
                 print("PaintGPT закрыт")
         elif ipt == 2:
-            print("Программа MultiPy. Версия 3.0.4 от 18.08.23. Некоторые пункты взяты из интернета, я не писал их сам. Также спасибо 4vanyek на помощь в некоторых командах и моментах")
+            print("Программа MultiPy. Версия 3.0.4(.1) от 18.08.23. Некоторые пункты взяты из интернета, я не писал их сам. Также спасибо 4vanyek и ChatGPT за помощь в некоторых командах и моментах")
+            print("Последняя стабильная версия: 3.0.2")
         elif ipt == 3:
             main_fun.info()
         elif ipt == 4:
@@ -182,6 +177,7 @@ try:
         elif ipt == 9:
             print("Вам выпало", randint(1,6))
         elif ipt == 10:
+            print("Команда полностью написана через ChatGPT")
             city = input("Введите название города: ")
             weather = main_fun.get_weather(city)
             print(weather)
