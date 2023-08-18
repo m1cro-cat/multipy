@@ -30,7 +30,7 @@ def check_for_updates():
   cache_folder = 'cache'
   if not os.path.exists(cache_folder):
     os.mkdir(cache_folder)
-  latest_version_url = 'https://raw.githubusercontent.com/devcat86/multipy/master/version.txt'
+  latest_version_url = 'https://raw.githubusercontent.com/devcat86/multipy/main/latest_version.txt'
   latest_version_path = os.path.join(cache_folder, 'latest_version.txt')
   if not os.path.exists(latest_version_path):
     response = requests.get(latest_version_url)
