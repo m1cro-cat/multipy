@@ -8,29 +8,7 @@ import shutil
 import main_fun
 import main_beta
 current_version = "3.0.4.1" 
-
-def check_for_updates():
-  cache_folder = 'cache'
-  if not os.path.exists(cache_folder):
-    os.mkdir(cache_folder)
-
-  latest_version_url = 'https://raw.githubusercontent.com/devcat86/multipy/master/version.txt'
-
-  latest_version_path = os.path.join(cache_folder, 'latest_version.txt')
-  if not os.path.exists(latest_version_path):
-    response = requests.get(latest_version_url)
-    with open(latest_version_path, 'w') as f:
-      f.write(response.text)
-
-  with open(latest_version_path) as f:
-    latest_version = f.read().strip()
-
-  if latest_version > current_version:
-    print(f"Доступна новая версия {latest_version}")
-    update = input("Хотите обновиться? (y/n) ")
-    if update.lower() == 'y':
-      print("Обновляемся...")
-      def update_program():
+def update_program():
         url = 'https://github.com/devcat86/multipy/archive/master.zip'
         update_zip = os.path.join('cache', 'update.zip')
         response = requests.get(url)
@@ -48,7 +26,24 @@ def check_for_updates():
             shutil.move(src_path, dest_dir)
         shutil.rmtree(os.path.join('update'))
         print("Обновление завершено успешно!")
-
+def check_for_updates():
+  cache_folder = 'cache'
+  if not os.path.exists(cache_folder):
+    os.mkdir(cache_folder)
+  latest_version_url = 'https://raw.githubusercontent.com/devcat86/multipy/master/version.txt'
+  latest_version_path = os.path.join(cache_folder, 'latest_version.txt')
+  if not os.path.exists(latest_version_path):
+    response = requests.get(latest_version_url)
+    with open(latest_version_path, 'w') as f:
+      f.write(response.text)
+  with open(latest_version_path) as f:
+    latest_version = f.read().strip()
+  if latest_version > current_version:
+    print(f"Доступна новая версия {latest_version}")
+    update = input("Хотите обновиться? (y/n) ")
+    if update.lower() == 'y':
+      print("Обновляемся...")
+      update_program()
 if __name__ == '__main__':
   check_for_updates()
 try:
@@ -172,7 +167,7 @@ try:
             except Exception:
                 print("PaintGPT закрыт")
         elif ipt == 2:
-            print("Программа MultiPy. Версия 3.0.4.1 от 18.08.23. Некоторые пункты взяты из интернета, я не писал их сам. Также спасибо 4vanyek и ChatGPT за помощь в некоторых командах и моментах")
+            print(f"Программа MultiPy. Версия {current_version} от 18.08.23. Некоторые пункты взяты из интернета, я не писал их сам. Также спасибо 4vanyek и ChatGPT за помощь в некоторых командах и моментах")
             print("Последняя стабильная версия: 3.0.2")
         elif ipt == 3:
             main_fun.info()
@@ -191,7 +186,7 @@ try:
                 if price > 101:
                     print("Сказали же, ДО 100 xD")
                 elif count1 > 100:
-                    print("Вам с шансем 1% выпало число больше 100! Число было:", count)
+                    print("Вам с шансем 1% выпало число больше 100! Число", count)
                 elif price > count:
                     print("Число меньше!")
                 elif price < count:
