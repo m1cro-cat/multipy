@@ -4,6 +4,7 @@ from turtle import *
 import os
 import base64
 import requests
+import shutil
 import main_fun
 import main_beta
 current_version = "3.0.4.1" 
@@ -29,7 +30,26 @@ def check_for_updates():
     update = input("Хотите обновиться? (y/n) ")
     if update.lower() == 'y':
       print("Обновляемся...")
-      # здесь код для обновления программы
+      def update_program():
+        print("Обновляем программу...")
+
+        url = 'https://github.com/devcat86/multipy/archive/master.zip'
+        update_zip = os.path.join('cache', 'update.zip')
+        response = requests.get(url)
+        with open(update_zip, 'wb') as f:
+            f.write(response.content)
+        shutil.unpack_archive(update_zip, 'update')
+        os.remove(update_zip)
+        src_dir = os.path.join('update', '<repo>-master')
+        dest_dir = os.path.dirname(os.path.abspath(__file__))
+        for src_name in os.listdir(src_dir):
+            src_path = os.path.join(src_dir, src_name)
+            dest_path = os.path.join(dest_dir, src_name)
+            if os.path.exists(dest_path):
+                os.remove(dest_path)
+            shutil.move(src_path, dest_dir)
+        shutil.rmtree(os.path.join('update'))
+        print("Обновление завершено успешно!")
 
 if __name__ == '__main__':
   check_for_updates()
