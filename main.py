@@ -3,8 +3,36 @@ from time import *
 from turtle import *
 import os
 import base64
+import requests
 import main_fun
 import main_beta
+current_version = "3.0.4.1" 
+
+def check_for_updates():
+  cache_folder = 'cache'
+  if not os.path.exists(cache_folder):
+    os.mkdir(cache_folder)
+
+  latest_version_url = 'https://raw.githubusercontent.com/devcat86/multipy/master/version.txt'
+
+  latest_version_path = os.path.join(cache_folder, 'latest_version.txt')
+  if not os.path.exists(latest_version_path):
+    response = requests.get(latest_version_url)
+    with open(latest_version_path, 'w') as f:
+      f.write(response.text)
+
+  with open(latest_version_path) as f:
+    latest_version = f.read().strip()
+
+  if latest_version > current_version:
+    print(f"Доступна новая версия {latest_version}")
+    update = input("Хотите обновиться? (y/n) ")
+    if update.lower() == 'y':
+      print("Обновляемся...")
+      # здесь код для обновления программы
+
+if __name__ == '__main__':
+  check_for_updates()
 try:
     def prt():
         print(" <<MultiPy>> \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - игра КНБ \n 5 - игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Сверх-Таймер обратного отсчета \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длинну строки(len) \n 14 - beta \n 15 - ping")
