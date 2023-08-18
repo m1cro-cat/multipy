@@ -31,8 +31,6 @@ def check_for_updates():
     if update.lower() == 'y':
       print("Обновляемся...")
       def update_program():
-        print("Обновляем программу...")
-
         url = 'https://github.com/devcat86/multipy/archive/master.zip'
         update_zip = os.path.join('cache', 'update.zip')
         response = requests.get(url)
