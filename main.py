@@ -294,7 +294,7 @@ try:
             print(os.system(f"ping {i1}"))
         else: 
             print("???")
-        ipt = input("Нажмите Enter чтобы показать меню ")
+        ipt = input("\nНажмите Enter чтобы показать меню ")
         if ipt == "":
             prt()
             ipt = int(input("Что вы хотите сделать? (Введите 0 или Ctrl+C для выхода): "))
