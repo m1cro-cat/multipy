@@ -7,7 +7,7 @@ import requests
 import shutil
 import main_fun
 import main_beta
-current_version = "3.0.4.1" 
+current_version = "3.1" 
 def update_program():
         url = 'https://github.com/devcat86/multipy/archive/master.zip'
         update_zip = os.path.join('cache', 'update.zip')
@@ -16,7 +16,7 @@ def update_program():
             f.write(response.content)
         shutil.unpack_archive(update_zip, 'update')
         os.remove(update_zip)
-        src_dir = os.path.join('update', '<repo>-master')
+        src_dir = os.path.join('update', 'multipy-main')
         dest_dir = os.path.dirname(os.path.abspath(__file__))
         for src_name in os.listdir(src_dir):
             src_path = os.path.join(src_dir, src_name)
