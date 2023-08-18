@@ -126,7 +126,7 @@ try:
             except Exception:
                 print("PaintGPT закрыт")
         elif ipt == 2:
-            print("Программа MultiPy. Версия 3.0.4(.1) от 18.08.23. Некоторые пункты взяты из интернета, я не писал их сам. Также спасибо 4vanyek и ChatGPT за помощь в некоторых командах и моментах")
+            print("Программа MultiPy. Версия 3.0.4.1 от 18.08.23. Некоторые пункты взяты из интернета, я не писал их сам. Также спасибо 4vanyek и ChatGPT за помощь в некоторых командах и моментах")
             print("Последняя стабильная версия: 3.0.2")
         elif ipt == 3:
             main_fun.info()
@@ -135,25 +135,27 @@ try:
         elif ipt == 5:
             c1 = 0
             count1 = 1
-            print("Угадайте число от 1 до 100!")
+            print("Угадайте число от 1 до 100! (Введите 0 если хотите сдаться)")
             count = randint(1,100)
-            if randint(1,999) == 456:
-                count = 2**21
+            if randint(1,100) == 3:
+                count = randint(5,20)**40
             price = int(input("Введите число: "))
             while price != count:
                 count1 += 1
-                c1 += 1
                 if price > 101:
                     print("Сказали же, ДО 100 xD")
+                elif count1 > 100:
+                    print("Вам с шансем 1% выпало число больше 100! Число было:", count)
                 elif price > count:
                     print("Число меньше!")
                 elif price < count:
                     print("Число больше!")
+                elif price == 0:
+                    print("Число:", count)
+                    break
                 else:
                     break
                 price = int(input("Введите число: "))
-                if c1 > 100:
-                    print("Число было")
             if price == count:
                     print("Вы угадали!")
                     print("Количество попыток:", count1)
