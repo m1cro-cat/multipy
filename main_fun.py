@@ -3,6 +3,8 @@ import requests
 import string
 def info():
         print("Лист обновлений!")
+        print("3.0.4 - 18.08.23")
+        print("Фиксы, улучшение кода PaintGPT")
         print("3.0.3 - 17.08.23")
         print("Много разных фиксов от 4vanyek")
         print("3.0.1, 3.0.2 - 15-16.08.23")
