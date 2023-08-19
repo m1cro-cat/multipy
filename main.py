@@ -7,7 +7,7 @@ import requests
 import shutil
 import main_fun
 import main_beta
-current_version = "3.0.4.2" 
+current_version = "3.0.4.3" 
 # def update_program():
 #         url = 'https://github.com/devcat86/multipy/archive/master.zip'
 #         update_zip = os.path.join('cache', 'update.zip')
@@ -48,7 +48,7 @@ current_version = "3.0.4.2"
 #   check_for_updates()
 try:
     def prt():
-        print(" <<MultiPy>> \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - игра КНБ \n 5 - игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Сверх-Таймер обратного отсчета \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длинну строки(len) \n 14 - beta \n 15 - ping")
+        print(" <<MultiPy>> \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - игра КНБ \n 5 - игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Сверх-Таймер обратного отсчета \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длинну строки(len) \n 14 - beta \n 15 - ping \n 16 - Прочее")
     prt()
     ipt = int(input("Что вы хотите сделать? (Введите 0 или Ctrl+C для выхода):"))
     while ipt != 0:
@@ -167,7 +167,7 @@ try:
             except Exception:
                 print("PaintGPT закрыт")
         elif ipt == 2:
-            print(f"Программа MultiPy. Версия {current_version} от 18.08.23. Некоторые пункты взяты из интернета, я не писал их сам. Также спасибо 4vanyek и ChatGPT за помощь в некоторых командах и моментах")
+            print(f"Программа MultiPy. Версия {current_version} от 19.08.23. Некоторые пункты взяты из интернета, я не писал их сам. Также спасибо 4vanyek и ChatGPT за помощь в некоторых командах и моментах")
             print("Последняя стабильная версия: 3.0.2")
         elif ipt == 3:
             main_fun.info()
@@ -292,6 +292,22 @@ try:
         elif ipt == 15:
             i1 = input("Введите ip, или доменное имя для пинга(укажите после ip -t если надо пинговать бесконечно): ")
             print(os.system(f"ping {i1}"))
+        elif ipt == 16:
+            print("1 - Интересный узор")
+            ipt = input()
+            if ipt == 1:
+                try:
+                    hideturtle()
+                    per2 = 10
+                    per1 = 1
+                    while True:
+                        speed(per2)
+                        forward(per1)
+                        left(90)
+                        per1 += 1
+                        per2 += 1
+                except Exception:
+                    print("Закрыто")
         else: 
             print("???")
         ipt1 = input("\nНажмите Enter чтобы показать меню ")
