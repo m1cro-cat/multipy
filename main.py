@@ -2,6 +2,7 @@ from random import *
 from time import *
 from turtle import *
 import os
+import sys
 import base64
 import requests
 import shutil
@@ -30,8 +31,9 @@ def updateProgram():
         shutil.move(src_path, dest_dir)
     shutil.rmtree(os.path.join('update'))
     shutil.rmtree(os.path.join('cache'))
-    print("Обновление завершено успешно!\nДля применения обновления, перезапустите программу")
-
+    print("Обновление завершено успешно!")
+    filepath = os.path.abspath(__file__)
+    os.execl(filepath, filepath, *sys.argv[1:])
 def checkForUpdates():
     cache_folder = 'cache'
     if not os.path.exists(cache_folder):
