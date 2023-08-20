@@ -1,7 +1,7 @@
 from random import *
 import requests
 import string
-def info():
+def cl():
     print("\nЛист обновлений!\n")
     print("3.1.0 - 20.08.23")
     print("Проверка и установка обновлений\nПеределанный таймер и секундомер\nМелкие исправления\n")
