@@ -34,6 +34,8 @@ try:
             main_beta.beta()
         elif ipt == 15:
             ping()
+        elif ipt == 16:
+            checkForUpdates()
         else: 
             print("???")
         ipt1 = input("\nНажмите Enter чтобы показать меню ")

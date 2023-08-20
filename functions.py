@@ -1,4 +1,4 @@
-current_version = "3.1.2"
+current_version = "3.1.2.1"
 last_stable = "3.1.0"
 version_date = "20.08.23"
 from random import *
@@ -11,7 +11,7 @@ import requests
 import shutil
 import main_beta
 def prt():
-        print(" <<MultiPy>> \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - Игра КНБ \n 5 - Игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Разное \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длину строки (len) \n 14 - beta \n 15 - ping ")
+        print(" <<MultiPy>> \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - Игра КНБ \n 5 - Игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Разное \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длину строки (len) \n 14 - beta \n 15 - ping \n 16 - Проверить обновления")
 
 def updateProgram():
     url = 'https://github.com/devcat86/multipy/archive/master.zip'
@@ -59,6 +59,8 @@ def checkForUpdates():
             sleep(0.3)
             print("Обновление отменено\n")
             shutil.rmtree(os.path.join('cache'))
+    else:
+         print("Обновления не найдены!")
 def paintgpt():
     try:
                 def paint():
