@@ -1,4 +1,4 @@
-current_version = "3.1.2.1"
+current_version = "3.1.2.2"
 last_stable = "3.1.0"
 version_date = "20.08.23"
 from random import *
@@ -35,6 +35,7 @@ def updateProgram():
     args = [sys.executable] + sys.argv
     os.execv(sys.executable, args)
 def checkForUpdates():
+    print("Проверка обновлений.. ")
     cache_dir = os.path.join('cache')
     if os.path.isdir(cache_dir):
         shutil.rmtree(cache_dir)
