@@ -42,9 +42,9 @@ def check_for_updates():
   if latest_version > current_version:
     print(f"Доступна новая версия {latest_version}")
     update = input("Хотите обновиться? (y/n) ")
+    shutil.rmtree(os.path.join('cache'))
     if update.lower() == 'y':
       print("Обновляемся...")
-      shutil.rmtree(os.path.join('cache'))
       update_program()
 if __name__ == '__main__':
   check_for_updates()
