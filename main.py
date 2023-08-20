@@ -9,9 +9,9 @@ try:
         elif ipt == 2:
             info()
         elif ipt == 3:
-            main_fun.cl()
+            cl()
         elif ipt == 4:
-            main_fun.knb() 
+            knb() 
         elif ipt == 5:
             igraUgadaika()
         elif ipt == 6:

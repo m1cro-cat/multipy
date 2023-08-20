@@ -1,9 +1,9 @@
 from random import *
 from time import *
 from turtle import *
+from functions import *
 import os
 import base64
-import main_fun
 import main_beta
 import datetime
 def old():
@@ -36,11 +36,24 @@ def old():
             elif ipt == 4:
                 print("Программа MultiPy. Версия 2.1.1 final от 10.08.23. Некоторые пункты взяты из интернета, я не писал их сам.")
             elif ipt == 5:
-                main_fun.info()
+                cl()
             elif ipt == 6:
                 city = input("Введите название города: ")
-                weather = main_fun.get_weather(city)
-                print(weather)
+                api_key = '9f847b92b31f51a681d9792e18973c03'
+                base_url = 'https://api.openweathermap.org/data/2.5/weather'
+                params = {
+                    'q': city,
+                    'appid': api_key,
+                    'units': 'metric'
+                }
+                response = requests.get(base_url, params=params)
+                weather_data = response.json()
+                if weather_data['cod'] == 200:
+                    temperature = weather_data['main']['temp']
+                    description = weather_data['weather'][0]['description']
+                    print(f"Температура в городе {city}: {temperature}°C, {description}")
+                else:
+                    print("Не удалось получить данные о погоде") 
             elif ipt == 7:
                 sec_start = int(input("1 - запустить таймер, 0 - выйти: "))
                 if sec_start == 1:
@@ -117,7 +130,7 @@ def old():
                     s1 = e.decode("UTF-8")
                     print(s1)
             elif ipt == 12:
-                    main_fun.knb() 
+                    knb() 
             elif ipt == 13:
                 print("Вам выпало", randint(1,6))
             elif ipt == 14:
