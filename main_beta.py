@@ -36,7 +36,7 @@ def old():
             elif ipt == 4:
                 print("Программа MultiPy. Версия 2.1.1 final от 10.08.23. Некоторые пункты взяты из интернета, я не писал их сам.")
             elif ipt == 5:
-                cl()
+                changelog()
             elif ipt == 6:
                 city = input("Введите название города: ")
                 api_key = '9f847b92b31f51a681d9792e18973c03'
