@@ -8,7 +8,7 @@ import shutil
 import main_fun
 import main_beta
 
-current_version = "3.1.0"
+current_version = "3.1.0.1"
 last_stable = "3.1.0"
 version_date = "20.08.23"
 
@@ -47,10 +47,14 @@ def checkForUpdates():
     if latest_version > current_version:
         print(f"Доступна новая версия {latest_version}")
         update = input("Хотите обновиться? (y/n): ")
-        shutil.rmtree(os.path.join('cache'))
         if update.lower() == 'y':
             print("Обновляемся...")
             updateProgram()
+        elif update.lower() == 'n':
+            sleep(0.3)
+            print("Обновление отменено\n")
+            shutil.rmtree(os.path.join('cache'))
+
 try:
     checkForUpdates()
     def prt():
