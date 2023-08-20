@@ -2,13 +2,14 @@ from random import *
 from time import *
 from turtle import *
 import os
+import sys
 import base64
 import requests
 import shutil
 import main_fun
 import main_beta
 
-current_version = "3.1.0.5"
+current_version = "3.1.0.6"
 last_stable = "3.1.0"
 version_date = "20.08.23"
 
@@ -31,7 +32,8 @@ def updateProgram():
     shutil.rmtree(os.path.join('update'))
     shutil.rmtree(os.path.join('cache'))
     print("Обновление завершено успешно!")
-    exec(open(__file__).read())
+    args = [sys.executable] + sys.argv
+    os.execv(sys.executable, args)
 def checkForUpdates():
     cache_dir = os.path.join('cache')
     if os.path.isdir(cache_dir):
