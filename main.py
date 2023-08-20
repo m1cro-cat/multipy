@@ -8,44 +8,44 @@ import shutil
 import main_fun
 import main_beta
 current_version = "3.0.4.3" 
-# def update_program():
-#         url = 'https://github.com/devcat86/multipy/archive/master.zip'
-#         update_zip = os.path.join('cache', 'update.zip')
-#         response = requests.get(url)
-#         with open(update_zip, 'wb') as f:
-#             f.write(response.content)
-#         shutil.unpack_archive(update_zip, 'update')
-#         os.remove(update_zip)
-#         src_dir = os.path.join('update', 'multipy-main')
-#         dest_dir = os.path.dirname(os.path.abspath(__file__))
-#         for src_name in os.listdir(src_dir):
-#             src_path = os.path.join(src_dir, src_name)
-#             dest_path = os.path.join(dest_dir, src_name)
-#             if os.path.exists(dest_path):
-#                 os.remove(dest_path)
-#             shutil.move(src_path, dest_dir)
-#         shutil.rmtree(os.path.join('update'))
-#         print("Обновление завершено успешно!")
-# def check_for_updates():
-#   cache_folder = 'cache'
-#   if not os.path.exists(cache_folder):
-#     os.mkdir(cache_folder)
-#   latest_version_url = 'https://raw.githubusercontent.com/devcat86/multipy/main/latest_version.txt'
-#   latest_version_path = os.path.join(cache_folder, 'latest_version.txt')
-#   if not os.path.exists(latest_version_path):
-#     response = requests.get(latest_version_url)
-#     with open(latest_version_path, 'w') as f:
-#       f.write(response.text)
-#   with open(latest_version_path) as f:
-#     latest_version = f.read().strip()
-#   if latest_version > current_version:
-#     print(f"Доступна новая версия {latest_version}")
-#     update = input("Хотите обновиться? (y/n) ")
-#     if update.lower() == 'y':
-#       print("Обновляемся...")
-#       update_program()
-# if __name__ == '__main__':
-#   check_for_updates()
+def update_program():
+        url = 'https://github.com/devcat86/multipy/archive/master.zip'
+        update_zip = os.path.join('cache', 'update.zip')
+        response = requests.get(url)
+        with open(update_zip, 'wb') as f:
+            f.write(response.content)
+        shutil.unpack_archive(update_zip, 'update')
+        os.remove(update_zip)
+        src_dir = os.path.join('update', 'multipy-main')
+        dest_dir = os.path.dirname(os.path.abspath(__file__))
+        for src_name in os.listdir(src_dir):
+            src_path = os.path.join(src_dir, src_name)
+            dest_path = os.path.join(dest_dir, src_name)
+            if os.path.exists(dest_path):
+                os.remove(dest_path)
+            shutil.move(src_path, dest_dir)
+        shutil.rmtree(os.path.join('update'))
+        print("Обновление завершено успешно!")
+def check_for_updates():
+  cache_folder = 'cache'
+  if not os.path.exists(cache_folder):
+    os.mkdir(cache_folder)
+  latest_version_url = 'https://raw.githubusercontent.com/devcat86/multipy/main/latest_version.txt'
+  latest_version_path = os.path.join(cache_folder, 'latest_version.txt')
+  if not os.path.exists(latest_version_path):
+    response = requests.get(latest_version_url)
+    with open(latest_version_path, 'w') as f:
+      f.write(response.text)
+  with open(latest_version_path) as f:
+    latest_version = f.read().strip()
+  if latest_version > current_version:
+    print(f"Доступна новая версия {latest_version}")
+    update = input("Хотите обновиться? (y/n) ")
+    if update.lower() == 'y':
+      print("Обновляемся...")
+      update_program()
+if __name__ == '__main__':
+  check_for_updates()
 try:
     def prt():
         print(" <<MultiPy>> \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - игра КНБ \n 5 - игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Сверх-Таймер обратного отсчета \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длинну строки(len) \n 14 - beta \n 15 - ping \n 16 - Прочее")
@@ -167,8 +167,8 @@ try:
             except Exception:
                 print("PaintGPT закрыт")
         elif ipt == 2:
-            print(f"Программа MultiPy. Версия {current_version} от 19.08.23. Некоторые пункты взяты из интернета, я не писал их сам. Также спасибо 4vanyek и ChatGPT за помощь в некоторых командах и моментах")
-            print("Последняя стабильная версия: 3.0.2")
+            print(f"Программа MultiPy. Версия {current_version} от 20.08.23. Некоторые пункты взяты из интернета, я не писал их сам. Также спасибо 4vanyek и ChatGPT за помощь в некоторых командах и моментах")
+            print("Последняя стабильная версия: 3.0.4.3")
         elif ipt == 3:
             main_fun.info()
         elif ipt == 4:
