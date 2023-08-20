@@ -25,6 +25,7 @@ def update_program():
                 os.remove(dest_path)
             shutil.move(src_path, dest_dir)
         shutil.rmtree(os.path.join('update'))
+        shutil.rmtree(os.path.join('cache'))
         print("Обновление завершено успешно!")
 def check_for_updates():
   cache_folder = 'cache'
@@ -43,6 +44,7 @@ def check_for_updates():
     update = input("Хотите обновиться? (y/n) ")
     if update.lower() == 'y':
       print("Обновляемся...")
+      shutil.rmtree(os.path.join('cache'))
       update_program()
 if __name__ == '__main__':
   check_for_updates()
