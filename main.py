@@ -8,7 +8,7 @@ import shutil
 import main_fun
 import main_beta
 
-current_version = "3.1.0.1"
+current_version = "3.1.0.2"
 last_stable = "3.1.0"
 version_date = "20.08.23"
 
@@ -30,7 +30,7 @@ def updateProgram():
         shutil.move(src_path, dest_dir)
     shutil.rmtree(os.path.join('update'))
     shutil.rmtree(os.path.join('cache'))
-    print("Обновление завершено успешно!")
+    print("Обновление завершено успешно!\nДля применения обновления, перезапустите программу")
 
 def checkForUpdates():
     cache_folder = 'cache'
