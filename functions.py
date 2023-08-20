@@ -1,4 +1,4 @@
-current_version = "3.1.2.5"
+current_version = "3.1.2.6"
 version_date = "20.08.23"
 
 from random import *
@@ -53,7 +53,7 @@ def checkForUpdates():
     with open(latest_version_path) as f:
         latest_version = f.read().strip()
     if latest_version > current_version:
-        print(f"Доступна новая версия {latest_version}")
+        print(f"Доступна новая версия {latest_version} (текущая версия: {current_version})")
         update = input("Хотите обновиться? (y/n): ")
         if update.lower() == 'y' or update.lower() == 'д':
             print("Обновляемся...")
