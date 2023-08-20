@@ -1,4 +1,4 @@
-current_version = "3.1.2.2"
+current_version = "3.1.2.3"
 last_stable = "3.1.0"
 version_date = "20.08.23"
 from random import *
@@ -62,6 +62,7 @@ def checkForUpdates():
             shutil.rmtree(os.path.join('cache'))
     else:
          print("Обновления не найдены!")
+         shutil.rmtree(os.path.join('cache'))
 def paintgpt():
     try:
                 def paint():
