@@ -9,7 +9,7 @@ import shutil
 import main_fun
 import main_beta
 
-current_version = "3.1.0.2"
+current_version = "3.1.0.3"
 last_stable = "3.1.0"
 version_date = "20.08.23"
 
@@ -35,6 +35,7 @@ def updateProgram():
     filepath = os.path.abspath(__file__)
     os.execl(filepath, filepath, *sys.argv[1:])
 def checkForUpdates():
+    shutil.rmtree(os.path.join('cache'))
     cache_folder = 'cache'
     if not os.path.exists(cache_folder):
         os.mkdir(cache_folder)
