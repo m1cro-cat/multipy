@@ -1,4 +1,4 @@
-current_version = "3.1.2.7"
+current_version = "3.1.3"
 version_date = "20.08.23"
 
 from random import *
@@ -10,9 +10,69 @@ import base64
 import requests
 import shutil
 import main_beta
+import json
+
+config_file = 'config.json'
+
+def toggleUpdates():
+
+    if os.path.exists(config_file):
+        with open(config_file) as f:
+            config = json.load(f)
+    else:
+        config = {
+            'updates_enabled': True
+        }
+
+    if config['updates_enabled'] == True:
+        update_state = "включена"
+    elif config['updates_enabled'] == False:
+        update_state = "выключена"
+    choice = input(f"1 / 0 - вкл/выкл автоматическую проверку обновлений\nСейчас автопроверка обновлений {update_state}.\nВыберите опцию: ")
+    
+    if choice == '1':
+        print("Обновления включены")
+        config['updates_enabled'] = True
+    elif choice == '0':
+        print("Обновления отключены")
+        config['updates_enabled'] = False
+
+    with open(config_file, 'w') as f:
+        json.dump(config, f)
+
+if __name__ == '__main__':
+    
+    toggleUpdates()
+    
+    # Check config setting
+    if os.path.exists(config_file):
+        with open(config_file) as f:
+            config = json.load(f)
+            if config['updates_enabled']:
+                print("Обновления включены")
+                # call update code
+            else:
+                print("Обновления отключены")
+    else:
+        print("Обновления включены по умолчанию")
+
+def miscMenu():
+    try:
+        while True:
+            choice = int(input("\n1 - проверить обновления\n2 - настроить обновления\n3 - выйти в главное меню\n\nВыберите опцию: "))
+            if choice == 1:
+                checkForUpdates()
+            elif choice == 2:
+                toggleUpdates()
+            elif choice == 3:
+                break
+            else:
+                print("Такой опции не существует")
+    except ValueError:
+        print("Неправильное значение! Должно быть 1 или 2")
 
 def prt():
-    print(" <<MultiPy>> \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - Игра КНБ \n 5 - Игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Разное \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длину строки (len) \n 14 - beta \n 15 - ping \n 16 - Проверить обновления")
+    print(" <<MultiPy>> \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - Игра КНБ \n 5 - Игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Разное \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длину строки (len) \n 14 - beta \n 15 - ping \n 16 - Обновления")
 
 def updateProgram():
     url = 'https://github.com/devcat86/multipy/archive/master.zip'
@@ -63,7 +123,7 @@ def checkForUpdates():
             print("Обновление отменено\n")
             shutil.rmtree(os.path.join('cache'))
     else:
-        print("Обновления не найдены!")
+        print("Обновлений не найдено!\n")
         shutil.rmtree(os.path.join('cache'))
 
 def paintgpt():
@@ -359,6 +419,8 @@ def ping():
 
 def changelog():
     print("\nЛист обновлений!\n")
+    print("3.1.3 - 20.08.23")
+    print("Добавлена настройка автопроверки обновлений (п. 16)\n")
     print("3.1.1 / 3.1.2 - 20.08.23")
     print("Перенос всех функций в отдельный файл, крч внутренняя переделка:)\n")
     print("3.1.0 - 20.08.23")

@@ -1,6 +1,10 @@
 from functions import *
 try:
-    checkForUpdates()
+    config_file = 'config.json'
+    with open(config_file) as f:
+        config = json.load(f)
+    if config['updates_enabled'] == True:
+        checkForUpdates()
     prt()
     ipt = int(input("Что вы хотите сделать? (Введите 0 или Ctrl+C для выхода): "))
     while ipt != 0:
@@ -35,7 +39,7 @@ try:
         elif ipt == 15:
             ping()
         elif ipt == 16:
-            checkForUpdates()
+            miscMenu()
         else: 
             print("???")
         ipt1 = input("\nНажмите Enter чтобы показать меню ")
