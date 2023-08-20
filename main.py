@@ -7,52 +7,60 @@ import requests
 import shutil
 import main_fun
 import main_beta
-current_version = "3.0.4.3" 
-def update_program():
-        url = 'https://github.com/devcat86/multipy/archive/master.zip'
-        update_zip = os.path.join('cache', 'update.zip')
-        response = requests.get(url)
-        with open(update_zip, 'wb') as f:
-            f.write(response.content)
-        shutil.unpack_archive(update_zip, 'update')
-        os.remove(update_zip)
-        src_dir = os.path.join('update', 'multipy-main')
-        dest_dir = os.path.dirname(os.path.abspath(__file__))
-        for src_name in os.listdir(src_dir):
-            src_path = os.path.join(src_dir, src_name)
-            dest_path = os.path.join(dest_dir, src_name)
-            if os.path.exists(dest_path):
-                os.remove(dest_path)
-            shutil.move(src_path, dest_dir)
-        shutil.rmtree(os.path.join('update'))
-        shutil.rmtree(os.path.join('cache'))
-        print("Обновление завершено успешно!")
-def check_for_updates():
-  cache_folder = 'cache'
-  if not os.path.exists(cache_folder):
-    os.mkdir(cache_folder)
-  latest_version_url = 'https://raw.githubusercontent.com/devcat86/multipy/main/latest_version.txt'
-  latest_version_path = os.path.join(cache_folder, 'latest_version.txt')
-  if not os.path.exists(latest_version_path):
-    response = requests.get(latest_version_url)
-    with open(latest_version_path, 'w') as f:
-      f.write(response.text)
-  with open(latest_version_path) as f:
-    latest_version = f.read().strip()
-  if latest_version > current_version:
-    print(f"Доступна новая версия {latest_version}")
-    update = input("Хотите обновиться? (y/n) ")
-    if update.lower() == 'y':
-      print("Обновляемся...")
-      update_program()
-      shutil.rmtree(os.path.join('cache'))
-if __name__ == '__main__':
-  check_for_updates()
+
+current_version = "3.1.0.2"
+last_stable = "3.1.0"
+version_date = "20.08.23"
+
+def updateProgram():
+    url = 'https://github.com/devcat86/multipy/archive/master.zip'
+    update_zip = os.path.join('cache', 'update.zip')
+    response = requests.get(url)
+    with open(update_zip, 'wb') as f:
+        f.write(response.content)
+    shutil.unpack_archive(update_zip, 'update')
+    os.remove(update_zip)
+    src_dir = os.path.join('update', 'multipy-main')
+    dest_dir = os.path.dirname(os.path.abspath(__file__))
+    for src_name in os.listdir(src_dir):
+        src_path = os.path.join(src_dir, src_name)
+        dest_path = os.path.join(dest_dir, src_name)
+        if os.path.exists(dest_path):
+            os.remove(dest_path)
+        shutil.move(src_path, dest_dir)
+    shutil.rmtree(os.path.join('update'))
+    shutil.rmtree(os.path.join('cache'))
+    print("Обновление завершено успешно!\nДля применения обновления, перезапустите программу")
+
+def checkForUpdates():
+    cache_folder = 'cache'
+    if not os.path.exists(cache_folder):
+        os.mkdir(cache_folder)
+    latest_version_url = 'https://raw.githubusercontent.com/devcat86/multipy/main/latest_version.txt'
+    latest_version_path = os.path.join(cache_folder, 'latest_version.txt')
+    if not os.path.exists(latest_version_path):
+        response = requests.get(latest_version_url)
+        with open(latest_version_path, 'w') as f:
+            f.write(response.text)
+    with open(latest_version_path) as f:
+        latest_version = f.read().strip()
+    if latest_version > current_version:
+        print(f"Доступна новая версия {latest_version}")
+        update = input("Хотите обновиться? (y/n): ")
+        if update.lower() == 'y':
+            print("Обновляемся...")
+            updateProgram()
+        elif update.lower() == 'n':
+            sleep(0.3)
+            print("Обновление отменено\n")
+            shutil.rmtree(os.path.join('cache'))
+
 try:
+    checkForUpdates()
     def prt():
-        print(" <<MultiPy>> \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - игра КНБ \n 5 - игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Сверх-Таймер обратного отсчета \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длинну строки(len) \n 14 - beta \n 15 - ping \n 16 - Прочее")
+        print(" <<MultiPy>> \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - Игра КНБ \n 5 - Игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Сверх-Таймер обратного отсчета \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длину строки (len) \n 14 - beta \n 15 - ping \n 16 - Прочее")
     prt()
-    ipt = int(input("Что вы хотите сделать? (Введите 0 или Ctrl+C для выхода):"))
+    ipt = int(input("Что вы хотите сделать? (Введите 0 или Ctrl+C для выхода): "))
     while ipt != 0:
         if ipt == 1:
             try:
@@ -169,8 +177,8 @@ try:
             except Exception:
                 print("PaintGPT закрыт")
         elif ipt == 2:
-            print(f"Программа MultiPy. Версия {current_version} от 20.08.23. Некоторые пункты взяты из интернета, я не писал их сам. Также спасибо 4vanyek и ChatGPT за помощь в некоторых командах и моментах")
-            print("Последняя стабильная версия: 3.0.4.3")
+            print(f"\nПрограмма MultiPy.\nВерсия {current_version} от {version_date}.\nНекоторые пункты взяты из интернета, я не писал их сам.\nТакже спасибо MystieHum и ChatGPT за помощь в некоторых командах и моментах")
+            print(f"Последняя стабильная версия: {last_stable}")
         elif ipt == 3:
             main_fun.info()
         elif ipt == 4:
@@ -203,18 +211,42 @@ try:
                     print("Вы угадали!")
                     print("Количество попыток:", count1)
         elif ipt == 6:
-            sec_start = int(input("1 - запустить секундомер, 0 - выйти: "))
-            if sec_start == 1:
-                start = time()
-                sec_end = int(input("0 - стоп: "))
-                end = time()
-                total_time = (end - start)
-                print("Время -",round(total_time, 3)) 
+            print("Нажмите Enter чтобы начать, Ctrl+C чтобы остановить")
+
+            try:
+                input()
+                start = perf_counter()
+
+                while True:
+                    elapsed = perf_counter() - start
+                    hours = str(int(elapsed / 3600)).zfill(2)
+                    minutes = str(int(elapsed / 60) % 60).zfill(2) 
+                    seconds = str(int(elapsed) % 60).zfill(2)
+                    milliseconds = str(int(elapsed * 1000) % 1000).zfill(3)
+                    print("\r{0}:{1}:{2}:{3}".format(hours, minutes, seconds, milliseconds), end="")
+
+            except KeyboardInterrupt:
+                print("\nСекундомер остановлен!")
         elif ipt == 7:
-            timer1 = int(input("Таймер обратного отсчета. Введите секунды: "))
-            for i in range(timer1, -1, -1):
-                print(i)
-                sleep(1)
+            try:
+                my_time = int(input("Таймер обратного отсчета. Введите секунды: "))
+                
+                end = time() + my_time
+                while time() < end:
+                    remaining = end - time()
+                    hours = int(remaining / 3600) 
+                    minutes = int(remaining / 60) % 60
+                    seconds = int(remaining) % 60
+                    milliseconds = int(remaining * 1000) % 1000
+                    
+                    print(f"\r{hours:02}:{minutes:02}:{seconds:02}:{milliseconds:03}", end="")
+                    print("\r", end="")
+                    sleep(0.01)
+                    
+                print("\r\nВремя вышло!")
+                
+            except ValueError:
+                print("Неправильное значение!")
         elif ipt == 8:
             timer1 = int(input("Супер-Таймер обратного отсчета. Введите что либо: "))
             for i in range(timer1, -1, -1):
@@ -224,47 +256,47 @@ try:
         elif ipt == 10:
             print("Команда полностью написана через ChatGPT")
             city = input("Введите название города: ")
-            weather = main_fun.get_weather(city)
+            weather = main_fun.getWeather(city)
             print(weather)
         elif ipt == 11:
             per1 = int(input("1 - генератор букв, 2 - генератор цифр, 3 - генератор пароля(буквы + цифры): "))
             if per1 == 1:
                 per2 = ""
-                dsds = int(input("Введите длинну: "))
-                alfeu = "abcdefghijklmnopqrstuvwxyz"
+                dsds = int(input("Введите длину: "))
+                alfen = "abcdefghijklmnopqrstuvwxyz"
                 alfru = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
-                gdh = input("А какой язык? eu / ru / all? ").lower()
+                gdh = input("А какой язык? en / ru / all? ").lower()
                 if gdh == "ru":
                     alf = alfru
-                if gdh == "eu":
-                    alf = alfeu
+                if gdh == "en":
+                    alf = alfen
                 if gdh == "all":
                     alf = ""
                     alf += alfru
-                    alf += alfeu
+                    alf += alfen
                 for i in range(dsds):
                     per2 += alf[randint(0, (len(alf) - 1))]
                 print(per2)
             if per1 == 2:
-                dsds = int(input("Введите длинну пароля: "))
+                dsds = int(input("Введите длину пароля: "))
                 per1 = ""
                 for i in range(dsds):
                     per1 += str(randint(0,9))
                 print(per1)
             if per1 == 3:
                 per2 = ""
-                dsds = int(input("Введите длинну: "))
-                alfeu = "abcdefghijklmnopqrstuvwxyz"
+                dsds = int(input("Введите длину: "))
+                alfen = "abcdefghijklmnopqrstuvwxyz"
                 alfru = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
-                gdh = input("А какой язык? eu / ru / all? ").lower()
+                gdh = input("А какой язык? en / ru / all? ").lower()
                 if gdh == "ru":
                     alf = alfru
-                elif gdh == "eu":  
-                    alf = alfeu
+                elif gdh == "en":  
+                    alf = alfen
                 elif gdh == "all":
                     alf = "" 
                     alf += alfru
-                    alf += alfeu
+                    alf += alfen
                 for i in range(dsds):
                     per2 += alf[randint(0, len(alf)-1)]
                     if randint(1,3) == 1:
@@ -288,16 +320,15 @@ try:
                 print(s1)
         elif ipt == 13:
             per3 = input("Введите строку: ")
-            print("Длинна строки:", len(per3))
+            print("Длина строки:", len(per3))
         elif ipt == 14:
             main_beta.beta()
         elif ipt == 15:
-            i1 = input("Введите ip, или доменное имя для пинга(укажите после ip -t если надо пинговать бесконечно): ")
+            i1 = input("Введите ip, или доменное имя для пинга (укажите после ip -t если надо пинговать бесконечно): ")
             print(os.system(f"ping {i1}"))
         elif ipt == 16:
-            print("1 - Интересный узор")
-            ipt = input()
-            if ipt == 1:
+            ipt1 = int(input("1 - Интересный узор\nВыберите что-нибудь: "))
+            if ipt1 == 1:
                 try:
                     hideturtle()
                     per2 = 10
@@ -310,6 +341,8 @@ try:
                         per2 += 1
                 except Exception:
                     print("Закрыто")
+            else:
+                print("???")
         else: 
             print("???")
         ipt1 = input("\nНажмите Enter чтобы показать меню ")
