@@ -1,6 +1,6 @@
-current_version = "3.1.2.3"
-last_stable = "3.1.0"
+current_version = "3.1.2.4"
 version_date = "20.08.23"
+
 from random import *
 from time import *
 from turtle import *
@@ -10,8 +10,9 @@ import base64
 import requests
 import shutil
 import main_beta
+
 def prt():
-        print(" <<MultiPy>> \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - Игра КНБ \n 5 - Игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Разное \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длину строки (len) \n 14 - beta \n 15 - ping \n 16 - Проверить обновления")
+    print(" <<MultiPy>> \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - Игра КНБ \n 5 - Игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Разное \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длину строки (len) \n 14 - beta \n 15 - ping \n 16 - Проверить обновления")
 
 def updateProgram():
     url = 'https://github.com/devcat86/multipy/archive/master.zip'
@@ -34,6 +35,7 @@ def updateProgram():
     print("Обновление завершено успешно!\n")
     args = [sys.executable] + sys.argv
     os.execv(sys.executable, args)
+
 def checkForUpdates():
     print("Проверка обновлений.. ")
     cache_dir = os.path.join('cache')
@@ -61,8 +63,9 @@ def checkForUpdates():
             print("Обновление отменено\n")
             shutil.rmtree(os.path.join('cache'))
     else:
-         print("Обновления не найдены!")
-         shutil.rmtree(os.path.join('cache'))
+        print("Обновления не найдены!")
+        shutil.rmtree(os.path.join('cache'))
+
 def paintgpt():
     try:
                 def paint():
@@ -177,174 +180,184 @@ def paintgpt():
                     paint()
     except Exception:
                 print("PaintGPT закрыт")
+
 def info():
     print(f"\nПрограмма MultiPy.\nВерсия {current_version} от {version_date}.\nНекоторые пункты взяты из интернета, я не писал их сам.\nТакже спасибо MystieHum и ChatGPT за помощь в некоторых командах и моментах")
-    print(f"Последняя стабильная версия: {last_stable}")
+
 def igraUgadaika():
-            count1 = 1
-            print("Угадайте число от 1 до 100! (Введите 0 если хотите сдаться)")
-            count = randint(1,100)
-            if randint(1,100) == 3:
-                count = randint(5,20)**40
-            price = int(input("Введите число: "))
-            while price != count:
-                count1 += 1
-                if price > 101:
-                    print("Сказали же, ДО 100 xD")
-                elif count1 > 100:
-                    print("Вам с шансем 1% выпало число больше 100! Число", count)
-                elif price > count:
-                    print("Число меньше!")
-                elif price < count:
-                    print("Число больше!")
-                elif price == 0:
-                    print("Число:", count)
-                    break
-                else:
-                    break
-                price = int(input("Введите число: "))
-            if price == count:
-                    print("Вы угадали!")
-                    print("Количество попыток:", count1)
-def sec():
-            print("Нажмите Enter чтобы начать, Ctrl+C чтобы остановить")
+    count1 = 1
+    print("Угадайте число от 1 до 100! (Введите 0 если хотите сдаться)")
+    count = randint(1,100)
+    if randint(1,100) == 3:
+        count = randint(5,20)**40
+    price = int(input("Введите число: "))
+    while price != count:
+        count1 += 1
+        if price > 101:
+            print("Сказали же, ДО 100 xD")
+        elif count1 > 100:
+            print("Вам с шансем 1% выпало число больше 100! Число", count)
+        elif price > count:
+            print("Число меньше!")
+        elif price < count:
+            print("Число больше!")
+        elif price == 0:
+            print("Число:", count)
+            break
+        else:
+            break
+        price = int(input("Введите число: "))
+    if price == count:
+        print("Вы угадали!")
+        print("Количество попыток:", count1)
 
-            try:
-                input()
-                start = perf_counter()
+def stopwatch():
+    print("Нажмите Enter чтобы начать, Ctrl+C чтобы остановить")
+    try:
+        input()
+        start = perf_counter()
 
-                while True:
-                    elapsed = perf_counter() - start
-                    hours = str(int(elapsed / 3600)).zfill(2)
-                    minutes = str(int(elapsed / 60) % 60).zfill(2) 
-                    seconds = str(int(elapsed) % 60).zfill(2)
-                    milliseconds = str(int(elapsed * 1000) % 1000).zfill(3)
-                    print("\r{0}:{1}:{2}:{3}".format(hours, minutes, seconds, milliseconds), end="")
+        while True:
+            elapsed = perf_counter() - start
+            hours = str(int(elapsed / 3600)).zfill(2)
+            minutes = str(int(elapsed / 60) % 60).zfill(2) 
+            seconds = str(int(elapsed) % 60).zfill(2)
+            milliseconds = str(int(elapsed * 1000) % 1000).zfill(3)
+            print("\r{0}:{1}:{2}:{3}".format(hours, minutes, seconds, milliseconds), end="")
 
-            except KeyboardInterrupt:
-                print("\nСекундомер остановлен!")
+    except KeyboardInterrupt:
+        print("\nСекундомер остановлен!")
+
 def timer():
     try:
-                my_time = int(input("Таймер обратного отсчета. Введите секунды: "))
+        my_time = int(input("Таймер обратного отсчета. Введите секунды: "))
                 
-                end = time() + my_time
-                while time() < end:
-                    remaining = end - time()
-                    hours = int(remaining / 3600) 
-                    minutes = int(remaining / 60) % 60
-                    seconds = int(remaining) % 60
-                    milliseconds = int(remaining * 1000) % 1000
+        end = time() + my_time
+        while time() < end:
+            remaining = end - time()
+            hours = int(remaining / 3600) 
+            minutes = int(remaining / 60) % 60
+            seconds = int(remaining) % 60
+            milliseconds = int(remaining * 1000) % 1000
+            
+            print(f"\r{hours:02}:{minutes:02}:{seconds:02}:{milliseconds:03}", end="")
+            print("\r", end="")
+            sleep(0.01)
                     
-                    print(f"\r{hours:02}:{minutes:02}:{seconds:02}:{milliseconds:03}", end="")
-                    print("\r", end="")
-                    sleep(0.01)
-                    
-                print("\r\nВремя вышло!")
+        print("\r\nВремя вышло!")
                 
     except ValueError:
         print("Неправильное значение!")
+
 def raznoe():
-            ipt1 = int(input("1 - Интересный узор\nВыберите что-нибудь: "))
-            if ipt1 == 1:
-                try:
-                    hideturtle()
-                    per2 = 10
-                    per1 = 1
-                    while True:
-                        speed(per2)
-                        forward(per1)
-                        left(90)
-                        per1 += 1
-                        per2 += 1
-                except Exception:
-                    print("Закрыто")
-            else:
-                print("???")
+    ipt1 = int(input("1 - Интересный узор\nВыберите что-нибудь: "))
+    if ipt1 == 1:
+        try:
+            hideturtle()
+            per2 = 10
+            per1 = 1
+            while True:
+                speed(per2)
+                forward(per1)
+                left(90)
+                per1 += 1
+                per2 += 1
+        except Exception:
+            print("Закрыто")
+    else:
+        print("???")
+
 def weather():
-            print("Команда полностью написана через ChatGPT")
-            city = input("Введите название города: ")
-            api_key = '9f847b92b31f51a681d9792e18973c03'
-            base_url = 'https://api.openweathermap.org/data/2.5/weather'
-            params = {
-                'q': city,
-                'appid': api_key,
-                'units': 'metric'
-            }
-            response = requests.get(base_url, params=params)
-            weather_data = response.json()
-            if weather_data['cod'] == 200:
-                temperature = weather_data['main']['temp']
-                description = weather_data['weather'][0]['description']
-                print(f"Температура в городе {city}: {temperature}°C, {description}")
-            else:
-                print("Не удалось получить данные о погоде") 
+    print("Команда полностью написана через ChatGPT")
+    city = input("Введите название города: ")
+    api_key = '9f847b92b31f51a681d9792e18973c03'
+    base_url = 'https://api.openweathermap.org/data/2.5/weather'
+    params = {
+        'q': city,
+        'appid': api_key,
+        'units': 'metric'
+    }
+    response = requests.get(base_url, params=params)
+    weather_data = response.json()
+    if weather_data['cod'] == 200:
+        temperature = weather_data['main']['temp']
+        description = weather_data['weather'][0]['description']
+        print(f"Температура в городе {str(city).capitalize()}: {temperature}°C, {description}")
+    else:
+        print("Не удалось получить данные о погоде") 
+
 def gen():
-            per1 = int(input("1 - генератор букв, 2 - генератор цифр, 3 - генератор пароля(буквы + цифры): "))
-            if per1 == 1:
-                per2 = ""
-                dsds = int(input("Введите длину: "))
-                alfen = "abcdefghijklmnopqrstuvwxyz"
-                alfru = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
-                gdh = input("А какой язык? en / ru / all? ").lower()
-                if gdh == "ru":
-                    alf = alfru
-                if gdh == "en":
-                    alf = alfen
-                if gdh == "all":
-                    alf = ""
-                    alf += alfru
-                    alf += alfen
-                for i in range(dsds):
-                    per2 += alf[randint(0, (len(alf) - 1))]
-                print(per2)
-            if per1 == 2:
-                dsds = int(input("Введите длину пароля: "))
-                per1 = ""
-                for i in range(dsds):
-                    per1 += str(randint(0,9))
-                print(per1)
-            if per1 == 3:
-                per2 = ""
-                dsds = int(input("Введите длину: "))
-                alfen = "abcdefghijklmnopqrstuvwxyz"
-                alfru = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
-                gdh = input("А какой язык? en / ru / all? ").lower()
-                if gdh == "ru":
-                    alf = alfru
-                elif gdh == "en":  
-                    alf = alfen
-                elif gdh == "all":
-                    alf = "" 
-                    alf += alfru
-                    alf += alfen
-                for i in range(dsds):
-                    per2 += alf[randint(0, len(alf)-1)]
-                    if randint(1,3) == 1:
-                        for i in range(randint(1, 3)):
-                            per2 += str(randint(0,9))
-                if len(per2) > dsds:
-                    per2 = per2[:dsds]
-                print(per2)
+    per1 = int(input("1 - генератор букв, 2 - генератор цифр, 3 - генератор пароля(буквы + цифры): "))
+    if per1 == 1:
+        per2 = ""
+        passLength = int(input("Введите длину: "))
+        # alph - это алфавит
+        alphEn = "abcdefghijklmnopqrstuvwxyz"
+        alphRu = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+        lang = input("А какой язык? en / ru / all? ").lower()
+        if lang == "ru":
+            alph = alphRu
+        if lang == "en":
+            alph = alphEn
+        if lang == "all":
+            alph = ""
+            alph += alphRu
+            alph += alphEn
+        for i in range(passLength):
+            per2 += alph[randint(0, (len(alph) - 1))]
+        print(per2)
+    if per1 == 2:
+        passLength = int(input("Введите длину пароля: "))
+        per1 = ""
+        for i in range(passLength):
+            per1 += str(randint(0,9))
+        print(per1)
+    if per1 == 3:
+        per2 = ""
+        passLength = int(input("Введите длину: "))
+        alphEn = "abcdefghijklmnopqrstuvwxyz"
+        alphRu = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+        lang = input("А какой язык? en / ru / all? ").lower()
+        if lang == "ru":
+            alph = alphRu
+        elif lang == "en":  
+            alph = alphEn
+        elif lang == "all":
+            alph = "" 
+            alph += alphRu
+            alph += alphEn
+        for i in range(passLength):
+            per2 += alph[randint(0, len(alph)-1)]
+            if randint(1,3) == 1:
+                for i in range(randint(1, 3)):
+                    per2 += str(randint(0,9))
+        if len(per2) > passLength:
+            per2 = per2[:passLength]
+        print(per2)
+
 def base64fun():
-            q = int(input("1 - зашифровать, 2 - расшифровать: "))
-            if q == 2:
-                encoded_string = input("Введите строку для расшифрования: ")
-                decoded_bytes = base64.b64decode(encoded_string)
-                decoded_string = decoded_bytes.decode("utf-8")
-                print(decoded_string)
-            if q == 1:
-                q = input("Введите строку для шифрования: ")
-                b = q.encode("UTF-8")
-                e = base64.b64encode(b)
-                s1 = e.decode("UTF-8")
-                print(s1)
-def lena():
+    q = int(input("1 - зашифровать, 2 - расшифровать: "))
+    if q == 2:
+        encoded_string = input("Введите строку для расшифрования: ")
+        decoded_bytes = base64.b64decode(encoded_string)
+        decoded_string = decoded_bytes.decode("utf-8")
+        print(decoded_string)
+    if q == 1:
+        q = input("Введите строку для шифрования: ")
+        b = q.encode("UTF-8")
+        e = base64.b64encode(b)
+        s1 = e.decode("UTF-8")
+        print(s1)
+
+def length():
     per3 = input("Введите строку: ")
     print("Длина строки:", len(per3))
+
 def ping():
     i1 = input("Введите ip, или доменное имя для пинга (укажите после ip -t если надо пинговать бесконечно): ")
     print(os.system(f"ping {i1}"))
-def cl():
+
+def changelog():
     print("\nЛист обновлений!\n")
     print("3.1.1 / 3.1.2 - 20.08.23")
     print("Перенос всех функций в отдельный файл, крч внутренняя переделка:)\n")
@@ -379,30 +392,31 @@ def cl():
     print("1.1 - 04.07.23")
     print("Удален пункт мерч, как так он никому не нужен")
     print("Добавлены новые функции\n")
+
 def knb():
-    khbi = int(input("Камень(1), ножницы(2), или бумага?(3) (0 - выход, если вы обиделись введите 4): "))
-    while khbi != 0:
-        khb = randint(1,3)
-        if khb == 1 and khbi == 1:
-            per1 = "камень, ничья!"
-        if khb == 1 and khbi == 2:
-            per1 = "камень, я победил!"
-        if khb == 1 and khbi == 3:
-            per1 = "камень, ты победил!"
-        if khb == 2 and khbi == 1:
-            per1 = "ножницы, ты победил!"
-        if khb == 2 and khbi == 2:
-            per1 = "ножницы, ничья!"
-        if khb == 2 and khbi == 3:
-            per1 = "ножницы, я победил!"
-        if khb == 3 and khbi == 1:
-            per1 = "бумага, я победил!"
-        if khb == 3 and khbi == 2:
-            per1 = "бумага, ты победил!"
-        if khb == 3 and khbi == 3:
-            per1 = "бумага, ничья!"
-        elif khbi == 4:
+    response = int(input("Камень(1), ножницы(2), или бумага?(3) (0 - выход, если вы обиделись введите 4): "))
+    while response != 0:
+        randomAnswer = randint(1,3)
+        if randomAnswer == 1 and response == 1:
+            per1 = "Камень, ничья!"
+        if randomAnswer == 1 and response == 2:
+            per1 = "Камень, я победил!"
+        if randomAnswer == 1 and response == 3:
+            per1 = "Камень, ты победил!"
+        if randomAnswer == 2 and response == 1:
+            per1 = "Ножницы, ты победил!"
+        if randomAnswer == 2 and response == 2:
+            per1 = "Ножницы, ничья!"
+        if randomAnswer == 2 and response == 3:
+            per1 = "Ножницы, я победил!"
+        if randomAnswer == 3 and response == 1:
+            per1 = "Бумага, я победил!"
+        if randomAnswer == 3 and response == 2:
+            per1 = "Бумага, ты победил!"
+        if randomAnswer == 3 and response == 3:
+            per1 = "Бумага, ничья!"
+        elif response == 4:
             print("Игра закончена, вы победили и получаете шоколадную медальку! :3")
             break
         print(per1)
-        khbi = int(input("Камень(1), ножницы(2), или бумага?(3) (0 - выход, если вы обиделись введите 4): "))
+        response = int(input("Камень(1), ножницы(2), или бумага?(3) (0 - выход, если вы обиделись введите 4): "))

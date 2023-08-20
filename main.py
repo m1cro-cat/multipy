@@ -9,13 +9,13 @@ try:
         elif ipt == 2:
             info()
         elif ipt == 3:
-            cl()
+            changelog()
         elif ipt == 4:
             knb() 
         elif ipt == 5:
             igraUgadaika()
         elif ipt == 6:
-            sec()
+            stopwatch()
         elif ipt == 7:
             timer()
         elif ipt == 8:
@@ -29,7 +29,7 @@ try:
         elif ipt == 12:
             base64fun()
         elif ipt == 13:
-            lena()
+            length()
         elif ipt == 14:
             main_beta.beta()
         elif ipt == 15:
