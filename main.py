@@ -2,7 +2,6 @@ from random import *
 from time import *
 from turtle import *
 import os
-import sys
 import base64
 import requests
 import shutil
