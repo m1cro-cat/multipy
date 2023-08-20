@@ -1,4 +1,4 @@
-current_version = "3.1.2.4"
+current_version = "3.1.2.5"
 version_date = "20.08.23"
 
 from random import *
@@ -55,10 +55,10 @@ def checkForUpdates():
     if latest_version > current_version:
         print(f"Доступна новая версия {latest_version}")
         update = input("Хотите обновиться? (y/n): ")
-        if update.lower() == 'y':
+        if update.lower() == 'y' or update.lower() == 'д':
             print("Обновляемся...")
             updateProgram()
-        elif update.lower() == 'n':
+        elif update.lower() == 'n' or update.lower() == 'н':
             sleep(0.3)
             print("Обновление отменено\n")
             shutil.rmtree(os.path.join('cache'))
