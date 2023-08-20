@@ -31,7 +31,7 @@ def updateProgram():
         shutil.move(src_path, dest_dir)
     shutil.rmtree(os.path.join('update'))
     shutil.rmtree(os.path.join('cache'))
-    print("Обновление завершено успешно!")
+    print("Обновление завершено успешно!\n")
     args = [sys.executable] + sys.argv
     os.execv(sys.executable, args)
 def checkForUpdates():
