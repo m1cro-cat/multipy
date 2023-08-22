@@ -1,4 +1,4 @@
-current_version = "3.1.4.2"
+current_version = "3.1.4.3"
 version_date = "22.08.23"
 
 from random import *
@@ -144,6 +144,11 @@ def convertor():
 
                 # байты
                 # тут были байты:))
+
+                # кб
+                # elif ipt == "кб - байты":
+                #     per1 = int(input("Введите кб: "))
+                #     print("Итог трудов программы:", per1 / 1024)
                 elif ipt == "кб - мб":
                     per1 = int(input("Введите кб: "))
                     print("Итог трудов программы:", per1 / 1024)

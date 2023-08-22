@@ -240,11 +240,25 @@ def old():
             ipt = int(input("Что вы хотите сделать?(введите 0 для выхода):"))
         print("exit...")
 def beta1():
-    ipt = int(input(" <<MultiPyBETA>> \n 0 - выход \n : "))
+    ipt = int(input(" <<MultiPyBETA>> \n 0 - выход \n 1 - тест байтов: "))
     while ipt != 0:
-            ipt = int(input(" <<MultiPyBETA>> \n 0 - выход \n : "))
+        if ipt == 1:
+                ipt = input("тест байтов").lower()
+                if ipt == "байты - кб":
+                    per1 = int(input("Введите байты: "))
+                    print("Итог трудов программы:", per1 / 1024)
+                elif ipt == "байты - мб":
+                    per1 = int(input("Введите байты: "))
+                    print("Итог трудов программы:", per1 / 2048)
+                elif ipt == "байты - гб":
+                    per1 = int(input("Введите байты: "))
+                    print("Итог трудов программы:", per1 / 4096)
+                elif ipt == "байты - тб":
+                    per1 = int(input("Введите байты: "))
+                    print("Итог трудов программы:", per1 / 8192)
+        ipt = int(input(" <<MultiPyBETA>> \n 0 - выход \n 1 - тест байтов: "))
 def beta():
-    t1 = int(input(" <<MENU>> \n 1 - старый бот(до переделки) \n 2 - бета версии новых функций(там ничо нет, не заходи): "))
+    t1 = int(input(" <<MENU>> \n 1 - старый бот(до переделки) \n 2 - бета версии новых функций: "))
     if t1 == 1:
         old()   
     elif t1 == 2:
