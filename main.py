@@ -40,6 +40,8 @@ try:
             ping()
         elif ipt == 16:
             miscMenu()
+        elif ipt == 17:
+            convertor()
         else: 
             print("???")
         ipt1 = input("\nНажмите Enter чтобы показать меню ")
