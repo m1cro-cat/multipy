@@ -1,5 +1,5 @@
-current_version = "3.1.3"
-version_date = "20.08.23"
+current_version = "3.1.3.1"
+version_date = "22.08.23"
 
 from random import *
 from time import *
@@ -72,7 +72,7 @@ def miscMenu():
         print("Неправильное значение! Должно быть 1 или 2")
 
 def prt():
-    print(" <<MultiPy>> \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - Игра КНБ \n 5 - Игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Разное \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длину строки (len) \n 14 - beta \n 15 - ping \n 16 - Обновления")
+    print(" <<MultiPy>> \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - Игра КНБ \n 5 - Игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Разное \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длину строки (len) \n 14 - Beta \n 15 - Ping \n 16 - Обновления")
 
 def updateProgram():
     url = 'https://github.com/devcat86/multipy/archive/master.zip'
@@ -128,116 +128,127 @@ def checkForUpdates():
 
 def paintgpt():
     try:
-                def paint():
-                    # задаю цвет
-                    colormode(255)
-                    r = randint(0, 255)
-                    g = randint(0, 255)
-                    b = randint(0, 255)
-                    color1 = (r, g, b)
-                    r = randint(0, 255)
-                    g = randint(0, 255)
-                    b = randint(0, 255)
-                    color2 = (r, g, b)
-                    color(color1, color2)
-                    #скорость
+        def paint():
+            # задаю цвет
+            colormode(255)
+            r = randint(0, 255)
+            g = randint(0, 255)
+            b = randint(0, 255)
+            color1 = (r, g, b)
+            r = randint(0, 255)
+            g = randint(0, 255)
+            b = randint(0, 255)
+            color2 = (r, g, b)
+            color(color1, color2)
+            #скорость
+            speed(10)
+            # генерация 
+            pensize(randint(4, 10))
+            cur1 = randint(10, 200)
+            ran1 = randint(2,9)
+            # рандомные координаты
+            penup()
+            goto(randint(-250, 250), randint(-250, 250))
+            pendown()
+            if ran1 == 2:
+                # звезда
+                begin_fill()
+                for i in range(5):
+                    forward(150)
+                    left(144)
+                end_fill()
+            if ran1 == 3:
+                # квадрат 1
+                if randint(1,2) == 1:
+                    begin_fill()
+                    for i in range(4):
+                        forward(100)
+                        left(90)
+                    end_fill()
+                else:
+                    for i in range(4):
+                        forward(100)
+                        left(90)
+            if ran1 == 4:
+                # круг 2
+                if randint(1,2) == 1:
+                    begin_fill()
+                    circle(cur1)
+                    end_fill()
+                else:
+                    circle(cur1)
+            if ran1 == 5:
+                # треугольник
+                if randint(1,2) == 1:
+                    begin_fill()
+                    for i in range(3):
+                        forward(cur1)
+                        left(120)
+                    end_fill()
+                else:
+                    for i in range(3):
+                        forward(cur1)
+                        left(120)
+            if ran1 == 6:
+                # спираль
+                per11 = 0
+                for i in range(randint(10, 36)):
+                    forward(per11)  
+                    per11 += 5
+                    left(90) 
+            if ran1 == 7:
+                # пончик
+                speed(15)
+                r = randint(0, 255)
+                g = randint(0, 255)
+                b = randint(0, 255)
+                color2 = (r, g, b)
+                for i in range(18):
+                    color(color1)
+                    forward(100)
+                    left(120)
+                    left(10)
+                    color(color2)
+                    forward(100)
+                    left(120)
+                    left(10) 
                     speed(10)
-                    # генерация 
-                    pensize(randint(4, 10))
-                    cur1 = randint(10, 200)
-                    ran1 = randint(2,9)
-                    # рандомные координаты
-                    penup()
-                    goto(randint(-250, 250), randint(-250, 250))
-                    pendown()
-                    if ran1 == 2:
-                        # звезда
-                        begin_fill()
-                        for i in range(5):
-                            forward(150)
-                            left(144)
-                        end_fill()
-                    if ran1 == 3:
-                        # квадрат 1
-                        if randint(1,2) == 1:
-                            begin_fill()
-                            for i in range(4):
-                                forward(100)
-                                left(90)
-                            end_fill()
-                        else:
-                            for i in range(4):
-                                forward(100)
-                                left(90)
-                    if ran1 == 4:
-                        # круг 2
-                        if randint(1,2) == 1:
-                            begin_fill()
-                            circle(cur1)
-                            end_fill()
-                        else:
-                            circle(cur1)
-                    if ran1 == 5:
-                        # треугольник
-                        if randint(1,2) == 1:
-                            begin_fill()
-                            for i in range(3):
-                                forward(cur1)
-                                left(120)
-                            end_fill()
-                        else:
-                            for i in range(3):
-                                forward(cur1)
-                                left(120)
-                    if ran1 == 6:
-                        # спираль
-                        per11 = 0
-                        for i in range(randint(10, 36)):
-                            forward(per11)  
-                            per11 += 5
-                            left(90) 
-                    if ran1 == 7:
-                        # пончик
-                        speed(15)
-                        r = randint(0, 255)
-                        g = randint(0, 255)
-                        b = randint(0, 255)
-                        color2 = (r, g, b)
-                        for i in range(18):
-                            color(color1)
-                            forward(100)
-                            left(120)
-                            left(10)
-                            color(color2)
-                            forward(100)
-                            left(120)
-                            left(10) 
-                        speed(10)
-                    if ran1 == 8:
-                        # ромб
-                        ran2 = randint(50,150)
-                        left(randint(0,360))
-                        for i in range(2):
-                            left(45)
-                            forward(ran2)
-                            left(135)
-                            forward(ran2)
-                    if ran1 == 9:
-                        # шестиугольник
-                        ran2 = randint(50,150)
-                        if randint(1,2) == 1:
-                            for i in range(6):
-                                forward(ran2)
-                                left(60)
-                        else:
-                            ran2 = randint(50,150)
-                            begin_fill()
-                            for i in range(6):
-                                forward(ran2)
-                                left(60)
-                            end_fill()
-                while True:
-                    paint()
+            if ran1 == 8:
+                # ромб
+                if randint(1,2) == 1:
+                    ran2 = randint(50,150)
+                    left(randint(0,360))
+                    for i in range(2):
+                        left(45)
+                        forward(ran2)
+                        left(135)
+                        forward(ran2)
+                else:
+                    begin_fill()
+                    ran2 = randint(50,150)
+                    left(randint(0,360))
+                    for i in range(2):
+                        left(45)
+                        forward(ran2)
+                        left(135)
+                        forward(ran2)
+                    end_fill()
+            if ran1 == 9:
+                # шестиугольник
+                ran2 = randint(50,150)
+                if randint(1,2) == 1:
+                    for i in range(6):
+                        forward(ran2)
+                        left(60)
+                else:
+                    ran2 = randint(50,150)
+                    begin_fill()
+                    for i in range(6):
+                        forward(ran2)
+                        left(60)
+                    end_fill()
+        while True:
+            paint()
     except Exception:
                 print("PaintGPT закрыт")
 
@@ -310,7 +321,7 @@ def timer():
         print("Неправильное значение!")
 
 def raznoe():
-    ipt1 = int(input("1 - Интересный узор\nВыберите что-нибудь: "))
+    ipt1 = int(input("1 - Интересный узор\n 2 - ??? \nВыберите что-нибудь: "))
     if ipt1 == 1:
         try:
             hideturtle()
@@ -324,8 +335,12 @@ def raznoe():
                 per2 += 1
         except Exception:
             print("Закрыто")
+    elif ipt1 == 2:
+        for i in range(22):
+            print("С днем рождения, мама!!")
+        print("Спасибо тебе за все *сердечко*")
     else:
-        print("???")
+        print("дУ ю СпИк ИнГлИш?!!?")
 
 def weather():
     print("Команда полностью написана через ChatGPT")
@@ -419,6 +434,8 @@ def ping():
 
 def changelog():
     print("\nЛист обновлений!\n")
+    print("3.1.3.1 - 22.08.23")
+    print("Поздравляю свою маму с днем рождения, эта версия для тебя :3")
     print("3.1.3 - 20.08.23")
     print("Добавлена настройка автопроверки обновлений (п. 16)\n")
     print("3.1.1 / 3.1.2 - 20.08.23")
