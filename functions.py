@@ -1,5 +1,5 @@
-current_version = "3.1.4.5"
-version_date = "25.08.23"
+current_version = "3.1.4.6"
+version_date = "26.08.23"
 
 from random import *
 from time import *
@@ -417,17 +417,17 @@ def igraUgadaika():
     price = int(input("Введите число: "))
     while price != count:
         count1 += 1
-        if price > 101:
+        if price == 0:
+            print("Число:", count)
+            break
+        elif price >= 101:
             print("Сказали же, ДО 100 xD")
         elif count1 > 100:
             print("Вам с шансем 1% выпало число больше 100! Число", count)
-        elif price > count:
+        elif price > count and price != 0:
             print("Число меньше!")
         elif price < count:
             print("Число больше!")
-        elif price == 0:
-            print("Число:", count)
-            break
         else:
             break
         price = int(input("Введите число: "))
@@ -583,6 +583,8 @@ def ping():
 
 def changelog():
     print("\nЛист обновлений!\n")
+    print("3.1.4.6 - 26.08.23")
+    print("Фиск игры Угадай число")
     print("3.1.4.2-5 - 22-25.08.23")
     print("Фиксы")
     print("3.1.4.1 - 22.08.23")
