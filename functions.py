@@ -1,4 +1,4 @@
-current_version = "3.1.4.8"
+current_version = "3.1.5"
 version_date = "02.11.23"
 
 from random import *
@@ -59,13 +59,15 @@ if __name__ == '__main__':
 def miscMenu():
     try:
         while True:
-            choice = int(input("\n1 - проверить обновления\n2 - настроить обновления\n3 - выйти в главное меню\n\nВыберите опцию: "))
+            choice = int(input("\n1 - проверить обновления\n2 - настроить обновления\n3 - переключить ветку обновлений\n4 - выйти в главное меню\nВыберите опцию: "))
             if choice == 1:
                 checkForUpdates()
             elif choice == 2:
                 toggleUpdates()
             elif choice == 3:
-                break
+                switchBranch()
+            elif choice == 4:
+            	break
             else:
                 print("Такой опции не существует")
     except ValueError:
@@ -228,56 +230,87 @@ def convertor():
                     print("Результат:", per1 * 1024)
 
 def updateProgram():
-    url = 'https://github.com/m1cro-cat/multipy/archive/master.zip'
-    update_zip = os.path.join('cache', 'update.zip')
-    response = requests.get(url)
-    with open(update_zip, 'wb') as f:
-        f.write(response.content)
-    shutil.unpack_archive(update_zip, 'update')
-    os.remove(update_zip)
-    src_dir = os.path.join('update', 'multipy-main')
-    dest_dir = os.path.dirname(os.path.abspath(__file__))
-    for src_name in os.listdir(src_dir):
-        src_path = os.path.join(src_dir, src_name)
-        dest_path = os.path.join(dest_dir, src_name)
-        if os.path.exists(dest_path):
-            os.remove(dest_path)
-        shutil.move(src_path, dest_dir)
-    shutil.rmtree(os.path.join('update'))
-    shutil.rmtree(os.path.join('cache'))
-    print("Обновление завершено успешно!\n")
-    args = [sys.executable] + sys.argv
-    os.execv(sys.executable, args)
+	if os.path.exists(config_file):
+		with open(config_file) as f:
+			config = json.load(f)
+	branch = config['update_branch']
+	url = f'https://github.com/m1cro-cat/multipy/archive/{branch}.zip'
+	update_zip = os.path.join('cache', 'update.zip')
+	os.makedirs('cache', exist_ok=True)
+	response = requests.get(url)
+	with open(update_zip, 'wb') as f:
+		f.write(response.content)
+	shutil.unpack_archive(update_zip, 'update')
+	os.remove(update_zip)
+	src_dir = os.path.join('update', f'multipy-{branch}')
+	dest_dir = os.path.dirname(os.path.abspath(__file__))
+	for src_name in os.listdir(src_dir):
+		src_path = os.path.join(src_dir, src_name)
+		dest_path = os.path.join(dest_dir, src_name)
+		if os.path.exists(dest_path):
+			os.remove(dest_path)
+		shutil.move(src_path, dest_dir)
+	shutil.rmtree(os.path.join('update'))
+	shutil.rmtree(os.path.join('cache'))
+	print("Обновление завершено успешно!\n")
+	args = [sys.executable] + sys.argv
+	os.execv(sys.executable, args)
 
 def checkForUpdates():
-    print("Проверка обновлений.. ")
-    cache_dir = os.path.join('cache')
-    if os.path.isdir(cache_dir):
-        shutil.rmtree(cache_dir)
-    cache_folder = 'cache'
-    if not os.path.exists(cache_folder):
-        os.mkdir(cache_folder)
-    latest_version_url = 'https://raw.githubusercontent.com/m1cro-cat/multipy/main/latest_version.txt'
-    latest_version_path = os.path.join(cache_folder, 'latest_version.txt')
-    if not os.path.exists(latest_version_path):
-        response = requests.get(latest_version_url)
-        with open(latest_version_path, 'w') as f:
-            f.write(response.text)
-    with open(latest_version_path) as f:
-        latest_version = f.read().strip()
-    if latest_version > current_version:
-        print(f"Доступна новая версия {latest_version} (текущая версия: {current_version})")
-        update = input("Хотите обновиться? (y/n): ")
-        if update.lower() == 'y' or update.lower() == 'д':
-            print("Обновляемся...")
-            updateProgram()
-        elif update.lower() == 'n' or update.lower() == 'н':
-            sleep(0.3)
-            print("Обновление отменено\n")
-            shutil.rmtree(os.path.join('cache'))
-    else:
-        print("Обновлений не найдено!\n")
-        shutil.rmtree(os.path.join('cache'))
+	if os.path.exists(config_file):
+		with open(config_file) as f:
+			config = json.load(f)
+	branch = config['update_branch']
+	print("Проверка обновлений.. ")
+	cache_dir = os.path.join('cache')
+	if os.path.isdir(cache_dir):
+		shutil.rmtree(cache_dir)
+	cache_folder = 'cache'
+	if not os.path.exists(cache_folder):
+		os.mkdir(cache_folder)
+	latest_version_url = f'https://raw.githubusercontent.com/m1cro-cat/multipy/{branch}/latest_version.txt'
+	latest_version_path = os.path.join(cache_folder, 'latest_version.txt')
+	if not os.path.exists(latest_version_path):
+		response = requests.get(latest_version_url)
+		with open(latest_version_path, 'w') as f:
+			f.write(response.text)
+	with open(latest_version_path) as f:
+		latest_version = f.read().strip()
+	if latest_version > current_version:
+		print(f"Доступна новая версия {latest_version} (текущая версия: {current_version})")
+		update = input("Хотите обновиться? (y/n): ")
+		if update.lower() == 'y' or update.lower() == 'д':
+			print("Обновляемся...")
+			updateProgram()
+		elif update.lower() == 'n' or update.lower() == 'н':
+			sleep(0.3)
+			print("Обновление отменено\n")
+			shutil.rmtree(os.path.join('cache'))
+	else:
+		print("Обновлений не найдено!\n")
+		shutil.rmtree(os.path.join('cache'))
+
+def switchBranch():
+	while True:
+		if os.path.exists(config_file):
+			with open(config_file) as f:
+				config = json.load(f)
+		print(f"Сейчас используется ветка {config['update_branch']} для обновлений.\n")
+		print("1 - переключиться на beta")
+		print("2 - переключиться на main")
+		print("3 - в главное меню")
+		choice = input("Выберите опцию: ")
+		if choice == '1':
+			config['update_branch'] = "beta"
+			updateProgram()
+		elif choice == '2':
+			config['update_branch'] = "main"
+			updateProgram()
+		elif choice == '3':
+			break
+		with open(config_file, 'w') as f:
+			json.dump(config, f)
+		print(f"Вы переключились на ветку {config['update_branch']}.")
 
 def paintgpt():
     try:
@@ -583,8 +616,10 @@ def ping():
 
 def changelog():
     print("\nЛист обновлений!\n")
+    print("3.1.5 - 02.11.23")
+    print("Переключение ветки обновлений (MystieHum)")
     print("3.1.4.8 - 02.11.23")
-    print("Важный фикс обновлений")
+    print("Важный фикс обновлений (m1cro_cat)")
     print("3.1.4.6 - 26.08.23")
     print("Фиск игры Угадай число")
     print("3.1.4.2-5 - 22-25.08.23")
