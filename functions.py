@@ -1,4 +1,4 @@
-current_version = "3.1.4.9"
+current_version = "3.1.4.10"
 version_date = "02.11.23"
 
 from random import *
@@ -302,14 +302,14 @@ def switchBranch():
 		choice = input("Выберите опцию: ")
 		if choice == '1':
 			config['update_branch'] = "beta"
-			updateProgram()
+			with open(config_file, 'w') as f:
+				json.dump(config, f)
 		elif choice == '2':
 			config['update_branch'] = "main"
-			updateProgram()
+			with open(config_file, 'w') as f:
+				json.dump(config, f)
 		elif choice == '3':
 			break
-		with open(config_file, 'w') as f:
-			json.dump(config, f)
 		print(f"Вы переключились на ветку {config['update_branch']}.")
 
 def paintgpt():
@@ -616,7 +616,7 @@ def ping():
 
 def changelog():
     print("\nЛист обновлений!\n")
-    print("3.1.5 beta (3.1.4.9 stable) - 02.11.23")
+    print("3.1.5 beta (3.1.4.9-10 stable) - 02.11.23")
     print("Переключение ветки обновлений (MystieHum)")
     print("3.1.4.8 - 02.11.23")
     print("Важный фикс обновлений (m1cro_cat)")
