@@ -616,7 +616,7 @@ def ping():
 
 def changelog():
     print("\nЛист обновлений!\n")
-    print("3.1.5 beta (3.1.4.9-10 stable) - 02.11.23")
+    print("3.1.5 - 02.11.23")
     print("Переключение ветки обновлений (MystieHum)")
     print("3.1.4.8 - 02.11.23")
     print("Важный фикс обновлений (m1cro_cat)")
