@@ -1,4 +1,4 @@
-current_version = "3.1.5.1"
+current_version = "3.1.5.2"
 version_date = "02.11.23"
 
 from random import *
@@ -616,7 +616,7 @@ def ping():
 
 def changelog():
     print("\nЛист обновлений!\n")
-    print("3.1.5-3.1.5.1 - 02.11.23")
+    print("3.1.5-3.1.5.2 - 02.11.23")
     print("Переключение ветки обновлений (MystieHum)")
     print("3.1.4.8 - 02.11.23")
     print("Важный фикс обновлений (m1cro_cat)")
