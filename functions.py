@@ -236,6 +236,7 @@ def updateProgram():
 	branch = config['update_branch']
 	url = f'https://github.com/m1cro-cat/multipy/archive/{branch}.zip'
 	update_zip = os.path.join('cache', 'update.zip')
+	os.makedirs('cache', exist_ok=True)
 	response = requests.get(url)
 	with open(update_zip, 'wb') as f:
 		f.write(response.content)
@@ -256,34 +257,38 @@ def updateProgram():
 	os.execv(sys.executable, args)
 
 def checkForUpdates():
-    print("Проверка обновлений.. ")
-    cache_dir = os.path.join('cache')
-    if os.path.isdir(cache_dir):
-        shutil.rmtree(cache_dir)
-    cache_folder = 'cache'
-    if not os.path.exists(cache_folder):
-        os.mkdir(cache_folder)
-    latest_version_url = 'https://raw.githubusercontent.com/m1cro-cat/multipy/main/latest_version.txt'
-    latest_version_path = os.path.join(cache_folder, 'latest_version.txt')
-    if not os.path.exists(latest_version_path):
-        response = requests.get(latest_version_url)
-        with open(latest_version_path, 'w') as f:
-            f.write(response.text)
-    with open(latest_version_path) as f:
-        latest_version = f.read().strip()
-    if latest_version > current_version:
-        print(f"Доступна новая версия {latest_version} (текущая версия: {current_version})")
-        update = input("Хотите обновиться? (y/n): ")
-        if update.lower() == 'y' or update.lower() == 'д':
-            print("Обновляемся...")
-            updateProgram()
-        elif update.lower() == 'n' or update.lower() == 'н':
-            sleep(0.3)
-            print("Обновление отменено\n")
-            shutil.rmtree(os.path.join('cache'))
-    else:
-        print("Обновлений не найдено!\n")
-        shutil.rmtree(os.path.join('cache'))
+	if os.path.exists(config_file):
+		with open(config_file) as f:
+			config = json.load(f)
+	branch = config['update_branch']
+	print("Проверка обновлений.. ")
+	cache_dir = os.path.join('cache')
+	if os.path.isdir(cache_dir):
+		shutil.rmtree(cache_dir)
+	cache_folder = 'cache'
+	if not os.path.exists(cache_folder):
+		os.mkdir(cache_folder)
+	latest_version_url = f'https://raw.githubusercontent.com/m1cro-cat/multipy/{branch}/latest_version.txt'
+	latest_version_path = os.path.join(cache_folder, 'latest_version.txt')
+	if not os.path.exists(latest_version_path):
+		response = requests.get(latest_version_url)
+		with open(latest_version_path, 'w') as f:
+			f.write(response.text)
+	with open(latest_version_path) as f:
+		latest_version = f.read().strip()
+	if latest_version > current_version:
+		print(f"Доступна новая версия {latest_version} (текущая версия: {current_version})")
+		update = input("Хотите обновиться? (y/n): ")
+		if update.lower() == 'y' or update.lower() == 'д':
+			print("Обновляемся...")
+			updateProgram()
+		elif update.lower() == 'n' or update.lower() == 'н':
+			sleep(0.3)
+			print("Обновление отменено\n")
+			shutil.rmtree(os.path.join('cache'))
+	else:
+		print("Обновлений не найдено!\n")
+		shutil.rmtree(os.path.join('cache'))
 
 def switchBranch():
 	while True:
@@ -297,8 +302,10 @@ def switchBranch():
 		choice = input("Выберите опцию: ")
 		if choice == '1':
 			config['update_branch'] = "beta"
+			updateProgram()
 		elif choice == '2':
 			config['update_branch'] = "master"
+			updateProgram()
 		elif choice == '3':
 			break
 		with open(config_file, 'w') as f:
