@@ -439,7 +439,7 @@ def paintgpt():
                 print("PaintGPT закрыт")
 
 def info():
-    print(f"\nПрограмма MultiPy.\nВерсия {current_version} от {version_date}.\nНекоторые пункты взяты из интернета, я не писал их сам.\nТакже спасибо MystieHum и ChatGPT за помощь в некоторых командах и моментах")
+    print(f"\nПрограмма MultiPy.\nВерсия {current_version} stable от {version_date}.\nНекоторые пункты взяты из интернета, я не писал их сам.\nТакже спасибо MystieHum и ChatGPT за помощь в некоторых командах и моментах")
 
 def igraUgadaika():
     count1 = 1
