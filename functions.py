@@ -1,4 +1,4 @@
-current_version = "3.1.5"
+current_version = "3.1.5b"
 version_date = "02.11.23"
 
 from random import *
@@ -302,10 +302,12 @@ def switchBranch():
 		choice = input("Выберите опцию: ")
 		if choice == '1':
 			config['update_branch'] = "beta"
-			updateProgram()
+			with open(config_file, 'w') as f:
+				json.dump(config, f) 
 		elif choice == '2':
 			config['update_branch'] = "main"
-			updateProgram()
+			with open(config_file, 'w') as f:
+				json.dump(config, f) 
 		elif choice == '3':
 			break
 		with open(config_file, 'w') as f:
