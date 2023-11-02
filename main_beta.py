@@ -7,7 +7,7 @@ import base64
 import main_beta
 import datetime
 def old():
-        print("Чтобы получить архив этой программы, пишите @m1cro_cat в дискорд")
+        print("Чтобы получить архив этой программы, пишите .... нету у меня больше дискорда..")
 def beta1():
     ipt = int(input(" <<MultiPyBETA>> \n 0 - выход \n 1 - : "))
     while ipt != 0:

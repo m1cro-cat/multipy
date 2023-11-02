@@ -228,7 +228,7 @@ def convertor():
                     print("Результат:", per1 * 1024)
 
 def updateProgram():
-    url = 'https://github.com/devcat86/multipy/archive/master.zip'
+    url = 'https://github.com/m1cro-cat/multipy/archive/master.zip'
     update_zip = os.path.join('cache', 'update.zip')
     response = requests.get(url)
     with open(update_zip, 'wb') as f:
@@ -257,7 +257,7 @@ def checkForUpdates():
     cache_folder = 'cache'
     if not os.path.exists(cache_folder):
         os.mkdir(cache_folder)
-    latest_version_url = 'https://raw.githubusercontent.com/devcat86/multipy/main/latest_version.txt'
+    latest_version_url = 'https://raw.githubusercontent.com/m1cro-cat/multipy/main/latest_version.txt'
     latest_version_path = os.path.join(cache_folder, 'latest_version.txt')
     if not os.path.exists(latest_version_path):
         response = requests.get(latest_version_url)
