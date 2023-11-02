@@ -1,5 +1,5 @@
-current_version = "3.1.4.7"
-version_date = "26.08.23"
+current_version = "3.1.4.8"
+version_date = "02.11.23"
 
 from random import *
 from time import *
@@ -583,6 +583,8 @@ def ping():
 
 def changelog():
     print("\nЛист обновлений!\n")
+    print("3.1.4.8 - 02.11.23")
+    print("Важный фикс обновлений")
     print("3.1.4.6 - 26.08.23")
     print("Фиск игры Угадай число")
     print("3.1.4.2-5 - 22-25.08.23")
