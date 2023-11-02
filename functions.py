@@ -1,4 +1,4 @@
-current_version = "3.1.4.6"
+current_version = "3.1.4.7"
 version_date = "26.08.23"
 
 from random import *
