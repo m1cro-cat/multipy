@@ -1,5 +1,5 @@
-current_version = "3.1.5.4 stable"
-version_date = "02.11.23"
+current_version = "3.1.5.5 stable"
+version_date = "03.11.23"
 
 from random import *
 from time import *
@@ -97,7 +97,7 @@ def dlLastVer():
 		return save_path
 
 	else:
-		print("Error: Failed to retrieve the latest version.")
+		print("Произошла ошибка при скачивании. Простите позязя :(")
 		return None
 
 def prt():
@@ -643,6 +643,8 @@ def ping():
 
 def changelog():
     print("\nЛист обновлений!\n")
+    print("3.1.5.5 - 03.11.23")
+    print("Фикс перевода, фикс даты. (кот)")
     print("3.1.5.3-4 - 03.11.23")
     print("Возможность скачать последнюю версию через п.16 (Обновления) (MystieHum & m1cro_cat)")
     print("3.1.5-3.1.5.2 - 02.11.23")
