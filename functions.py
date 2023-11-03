@@ -1,4 +1,4 @@
-current_version = "3.1.5.3 stable"
+current_version = "3.1.5.4 stable"
 version_date = "02.11.23"
 
 from random import *
@@ -67,15 +67,39 @@ def miscMenu():
             elif choice == 3:
                 switchBranch()
             elif choice == 4:
-                 dwnLastVer()
+                 dlLastVer()
             elif choice == 5:
             	break
             else:
                 print("Такой опции не существует")
     except ValueError:
         print("Неправильное значение! Должно быть 1 или 2")
-def dwnLastVer():
-     print("я усталь")
+
+def dlLastVer():
+	if os.path.exists(config_file):
+		with open(config_file) as f:
+			config = json.load(f)
+	branch = config['update_branch']
+	version_url = f'https://raw.githubusercontent.com/m1cro-cat/multipy/{branch}/latest_version.txt'
+	version_response = requests.get(version_url)
+
+	if version_response.status_code == 200:
+		latest_version = version_response.text.strip()
+		zip_url = f'https://github.com/m1cro-cat/multipy/archive/{branch}.zip'
+		save_file = f'mpy-{latest_version}.zip'
+		save_path = os.path.join(os.getcwd(), save_file)
+
+		response = requests.get(zip_url)
+		with open(save_path, 'wb') as f:
+			f.write(response.content)
+
+		print(f"Новая версия сохранена по пути:\n{save_path}")
+		return save_path
+
+	else:
+		print("Error: Failed to retrieve the latest version.")
+		return None
+
 def prt():
     print(" <<MultiPy>> (stable) \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - Игра КНБ \n 5 - Игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Разное \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длину строки (len) \n 14 - Beta \n 15 - Ping \n 16 - Обновления \n 17 - Конвертор(alpha)")
 def convertor():
@@ -619,8 +643,10 @@ def ping():
 
 def changelog():
     print("\nЛист обновлений!\n")
+    print("3.1.5.3-4 - 03.11.23")
+    print("Возможность скачать последнюю версию через п.16 (Обновления) (MystieHum & m1cro_cat)")
     print("3.1.5-3.1.5.2 - 02.11.23")
-    print("Переключение ветки обновлений (MystieHum(он молодец))")
+    print("Переключение ветки обновлений (MystieHum (он молодец))")
     print("3.1.4.8 - 02.11.23")
     print("Важный фикс обновлений (m1cro_cat)")
     print("3.1.4.6 - 26.08.23")
