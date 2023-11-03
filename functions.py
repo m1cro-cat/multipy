@@ -1,5 +1,6 @@
-current_version = "3.1.5.4 stable"
-version_date = "02.11.23"
+current_version = "3.1.5.6"
+release_type = "stable"
+version_date = "03.11.23"
 
 from random import *
 from time import *
@@ -57,23 +58,23 @@ if __name__ == '__main__':
         print("Обновления включены по умолчанию")
 
 def miscMenu():
-    try:
-        while True:
-            choice = int(input("\n1 - проверить обновления\n2 - настроить обновления\n3 - переключить ветку обновлений\n4 - скачать последную версию\n5 - выйти в главное меню\nВыберите опцию: "))
-            if choice == 1:
-                checkForUpdates()
-            elif choice == 2:
-                toggleUpdates()
-            elif choice == 3:
-                switchBranch()
-            elif choice == 4:
-                 dlLastVer()
-            elif choice == 5:
-            	break
-            else:
-                print("Такой опции не существует")
-    except ValueError:
-        print("Неправильное значение! Должно быть 1 или 2")
+	try:
+		while True:
+			choice = int(input("\n1 - проверить обновления\n2 - настроить проверку обновлений\n3 - переключить ветку обновлений\n4 - скачать последную версию\n5 - выйти в главное меню\nВыберите опцию: "))
+			if choice == 1:
+				checkForUpdates()
+			elif choice == 2:
+				toggleUpdates()
+			elif choice == 3:
+				switchBranch()
+			elif choice == 4:
+				dlLastVer()
+			elif choice == 5:
+				break
+			else:
+				print("Такой опции не существует")
+	except ValueError:
+		print("Неправильное значение! Должно быть от 1 до 5!")
 
 def dlLastVer():
 	if os.path.exists(config_file):
@@ -97,7 +98,7 @@ def dlLastVer():
 		return save_path
 
 	else:
-		print("Error: Failed to retrieve the latest version.")
+		print("Произошла ошибка при скачивании. Простите позязя :(")
 		return None
 
 def prt():
@@ -466,7 +467,7 @@ def paintgpt():
                 print("PaintGPT закрыт")
 
 def info():
-    print(f"\nПрограмма MultiPy.\nВерсия {current_version} от {version_date}.\nНекоторые пункты взяты из интернета, я не писал их сам.\nТакже ОГРОМНОЕ спасибо MystieHum и Claude за помощь в некоторых командах и моментах")
+    print(f"\nПрограмма MultiPy.\nВерсия {current_version} {release_type} от {version_date}.\nНекоторые пункты взяты из интернета, я не писал их сам.\nТакже ОГРОМНОЕ спасибо MystieHum и Claude за помощь в некоторых командах и моментах")
 
 def igraUgadaika():
     count1 = 1
@@ -643,6 +644,10 @@ def ping():
 
 def changelog():
     print("\nЛист обновлений!\n")
+    print("3.1.5.6 - 03.11.23")
+    print("Переименован пункт 'настроить обновления' в 'настроить проверку обновлений', чтобы избежать путаницы.\nТакже немного прибран код (MystieHum)")
+    print("3.1.5.5 - 03.11.23")
+    print("Фикс перевода, фикс даты. (кот)")
     print("3.1.5.3-4 - 03.11.23")
     print("Возможность скачать последнюю версию через п.16 (Обновления) (MystieHum & m1cro_cat)")
     print("3.1.5-3.1.5.2 - 02.11.23")
