@@ -1,4 +1,4 @@
-current_version = "3.1.5.6"
+current_version = "3.1.5.7"
 release_type = "stable"
 version_date = "03.11.23"
 
@@ -87,7 +87,7 @@ def dlLastVer():
 	if version_response.status_code == 200:
 		latest_version = version_response.text.strip()
 		zip_url = f'https://github.com/m1cro-cat/multipy/archive/{branch}.zip'
-		save_file = f'mpy-{latest_version}.zip'
+		save_file = f'mpy-{latest_version}-{branch}.zip'
 		save_path = os.path.join(os.getcwd(), save_file)
 
 		response = requests.get(zip_url)
@@ -644,6 +644,8 @@ def ping():
 
 def changelog():
     print("\nЛист обновлений!\n")
+    print("3.1.5.7 - 03.11.23")
+    print("Имя файлов скачанных версий теперь mpy-{версия}-{ветка}.zip (MystieHum)")
     print("3.1.5.6 - 03.11.23")
     print("Переименован пункт 'настроить обновления' в 'настроить проверку обновлений', чтобы избежать путаницы.\nТакже немного прибран код (MystieHum)")
     print("3.1.5.5 - 03.11.23")
