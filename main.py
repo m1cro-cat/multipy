@@ -1,10 +1,14 @@
 from functions import *
 try:
-    config_file = 'config.json'
-    with open(config_file) as f:
-        config = json.load(f)
-    if config['updates_enabled'] == True:
-        checkForUpdates()
+    try:
+        config_file = 'config.json'
+        with open(config_file) as f:
+            config = json.load(f)
+        if config['updates_enabled'] == True:
+            checkForUpdates()
+    except Exception as e:
+        print("Произошла ошибка:")
+        print(traceback.format_exc())
     prt()
     ipt = int(input("Что вы хотите сделать? (Введите 0 или Ctrl+C для выхода): "))
     while ipt != 0:

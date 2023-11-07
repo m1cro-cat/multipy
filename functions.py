@@ -1,6 +1,6 @@
-current_version = "3.1.5.7"
+current_version = "3.1.5.8"
 release_type = "stable"
-version_date = "03.11.23"
+version_date = "07.11.23"
 
 from random import *
 from time import *
@@ -12,6 +12,7 @@ import requests
 import shutil
 import main_beta
 import json
+import traceback
 
 config_file = 'config.json'
 
@@ -81,11 +82,11 @@ def dlLastVer():
 		with open(config_file) as f:
 			config = json.load(f)
 	branch = config['update_branch']
-	version_url = f'https://raw.githubusercontent.com/m1cro-cat/multipy/{branch}/latest_version.txt'
+	version_url = f'https://raw.githubusercontencom/m1cro-cat/multipy/{branch}/latest_version.txt'
 	version_response = requests.get(version_url)
 
 	if version_response.status_code == 200:
-		latest_version = version_response.text.strip()
+		latest_version = version_response.texstrip()
 		zip_url = f'https://github.com/m1cro-cat/multipy/archive/{branch}.zip'
 		save_file = f'mpy-{latest_version}-{branch}.zip'
 		save_path = os.path.join(os.getcwd(), save_file)
@@ -296,7 +297,7 @@ def checkForUpdates():
 	cache_folder = 'cache'
 	if not os.path.exists(cache_folder):
 		os.mkdir(cache_folder)
-	latest_version_url = f'https://raw.githubusercontent.com/m1cro-cat/multipy/{branch}/latest_version.txt'
+	latest_version_url = f'https://raw.githubusercontencom/m1cro-cat/multipy/{branch}/latest_version.txt'
 	latest_version_path = os.path.join(cache_folder, 'latest_version.txt')
 	if not os.path.exists(latest_version_path):
 		response = requests.get(latest_version_url)
@@ -535,7 +536,7 @@ def timer():
         print("Неправильное значение!")
 
 def raznoe():
-    ipt1 = int(input("1 - Интересный узор\nВыберите что-нибудь: "))
+    ipt1 = int(input("1 - Интересный узор\n2 - AMOGUS\nВыберите что-нибудь: "))
     if ipt1 == 1:
         try:
             hideturtle()
@@ -549,6 +550,71 @@ def raznoe():
                 per2 += 1
         except Exception:
             print("Закрыто")
+    elif ipt1 == 2:
+        pensize(30)
+        fillcolor("red")
+        begin_fill()
+        right(90)
+        forward(50)
+        right(180)
+        circle(40, -180)
+        right(180)
+        forward(200)
+        right(180)
+        circle(100, -180)
+        backward(20)
+        left(15)
+        circle(500, -20)
+        backward(20)
+        circle(40, -180)
+        left(7)
+        backward(50)
+        up()
+        left(90)
+        forward(10)
+        right(90)
+        down()
+        right(240)
+        circle(50, -70)
+        end_fill()
+        up()
+        right(230)
+        forward(100)
+        left(90)
+        forward(20)
+        right(90)
+        down()
+        fillcolor('skyblue')
+        begin_fill()
+        right(150)
+        circle(90, -55)
+        right(180)
+        forward(1)
+        right(180)
+        circle(10, -65)
+        right(180)
+        forward(110)
+        right(180)
+        circle(50, -190)
+        right(170)
+        forward(80)
+        right(180)
+        circle(45, -30)
+        end_fill()
+        up()
+        right(60)
+        forward(100)
+        right(90)
+        forward(75)
+        fillcolor('skyblue')
+        begin_fill()
+        down()
+        forward(30)
+        right(255)
+        circle(300, -30)
+        right(260)
+        forward(30)
+        end_fill()
     else:
         print("дУ ю СпИк ИнГлИш?!!?")
 
@@ -644,6 +710,8 @@ def ping():
 
 def changelog():
     print("\nЛист обновлений!\n")
+    print("3.1.5.8 - 07.11.23")
+    print("Если при проверке обновлений произойдет ошибка, то программа продолжит работу (m1cro_cat)")
     print("3.1.5.7 - 03.11.23")
     print("Имя файлов скачанных версий теперь mpy-{версия}-{ветка}.zip (MystieHum)")
     print("3.1.5.6 - 03.11.23")
