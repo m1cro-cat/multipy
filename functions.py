@@ -1,6 +1,6 @@
-current_version = "3.1.5.8"
+current_version = "3.1.5.9"
 release_type = "stable"
-version_date = "07.11.23"
+version_date = "09.11.23"
 
 from random import *
 from time import *
@@ -82,11 +82,11 @@ def dlLastVer():
 		with open(config_file) as f:
 			config = json.load(f)
 	branch = config['update_branch']
-	version_url = f'https://raw.githubusercontencom/m1cro-cat/multipy/{branch}/latest_version.txt'
+	version_url = f'https://raw.githubusercontent.com/m1cro-cat/multipy/{branch}/latest_version.txt'
 	version_response = requests.get(version_url)
 
 	if version_response.status_code == 200:
-		latest_version = version_response.texstrip()
+		latest_version = version_response.text.strip()
 		zip_url = f'https://github.com/m1cro-cat/multipy/archive/{branch}.zip'
 		save_file = f'mpy-{latest_version}-{branch}.zip'
 		save_path = os.path.join(os.getcwd(), save_file)
@@ -297,7 +297,7 @@ def checkForUpdates():
 	cache_folder = 'cache'
 	if not os.path.exists(cache_folder):
 		os.mkdir(cache_folder)
-	latest_version_url = f'https://raw.githubusercontencom/m1cro-cat/multipy/{branch}/latest_version.txt'
+	latest_version_url = f'https://raw.githubusercontent.com/m1cro-cat/multipy/{branch}/latest_version.txt'
 	latest_version_path = os.path.join(cache_folder, 'latest_version.txt')
 	if not os.path.exists(latest_version_path):
 		response = requests.get(latest_version_url)
@@ -710,6 +710,8 @@ def ping():
 
 def changelog():
     print("\nЛист обновлений!\n")
+    print("3.1.5.9 - 09.11.23")
+    print("Починил то что сломал(кошк)")
     print("3.1.5.8 - 07.11.23")
     print("Если при проверке обновлений произойдет ошибка, то программа продолжит работу (m1cro_cat)")
     print("3.1.5.7 - 03.11.23")
