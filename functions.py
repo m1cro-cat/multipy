@@ -1,6 +1,7 @@
-current_version = "3.1.5.9"
+current_version = "3.1.6"
 release_type = "stable"
 version_date = "09.11.23"
+config_file = 'config.json'
 
 from random import *
 from time import *
@@ -14,8 +15,74 @@ import main_beta
 import json
 import traceback
 
-config_file = 'config.json'
-
+def amogus():
+            speed(15)
+            color1 = (randint(0, 255), randint(0, 255), randint(0, 255))
+            color2 = (randint(0, 255), randint(0, 255), randint(0, 255))
+            pensize(30)
+            fillcolor(color1)
+            begin_fill()
+            right(90)
+            forward(50)
+            right(180)
+            circle(40, -180)
+            right(180)
+            forward(200)
+            right(180)
+            circle(100, -180)
+            backward(20)
+            left(15)
+            circle(500, -20)
+            backward(20)
+            circle(40, -180)
+            left(7)
+            backward(50)
+            up()
+            left(90)
+            forward(10)
+            right(90)
+            down()
+            right(240)
+            circle(50, -70)
+            end_fill()
+            up()
+            right(230)
+            forward(100)
+            left(90)
+            forward(20)
+            right(90)
+            down()
+            fillcolor(color2)
+            begin_fill()
+            right(150)
+            circle(90, -55)
+            right(180)
+            forward(1)
+            right(180)
+            circle(10, -65)
+            right(180)
+            forward(110)
+            right(180)
+            circle(50, -190)
+            right(170)
+            forward(80)
+            right(180)
+            circle(45, -30)
+            end_fill()
+            up()
+            right(60)
+            forward(100)
+            right(90)
+            forward(75)
+            fillcolor(color2)
+            begin_fill()
+            down()
+            forward(30)
+            right(255)
+            circle(300, -30)
+            right(260)
+            forward(30)
+            end_fill()
 def toggleUpdates():
 
     if os.path.exists(config_file):
@@ -103,7 +170,7 @@ def dlLastVer():
 		return None
 
 def prt():
-    print(" <<MultiPy>> (stable) \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - Игра КНБ \n 5 - Игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Разное \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длину строки (len) \n 14 - Beta \n 15 - Ping \n 16 - Обновления \n 17 - Конвертор(alpha)")
+    print(" <<MultiPy>> \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - Игра КНБ \n 5 - Игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Разное \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длину строки (len) \n 14 - Beta \n 15 - Ping \n 16 - Обновления \n 17 - Конвертор(alpha)")
 def convertor():
             ipt = input("Введите из чего в что вы хотите перевести \nДоступно: все от мм до км, все от байтов до тб\nНапример: байты - тб, метры - см\n(введите 0 для выхода): ").lower()
             while ipt != "0":
@@ -346,25 +413,21 @@ def paintgpt():
         def paint():
             # задаю цвет
             colormode(255)
-            r = randint(0, 255)
-            g = randint(0, 255)
-            b = randint(0, 255)
-            color1 = (r, g, b)
-            r = randint(0, 255)
-            g = randint(0, 255)
-            b = randint(0, 255)
-            color2 = (r, g, b)
+            color1 = (randint(0, 255), randint(0, 255), randint(0, 255))
+            color2 = (randint(0, 255), randint(0, 255), randint(0, 255))
             color(color1, color2)
             #скорость
             speed(10)
             # генерация 
             pensize(randint(4, 10))
             cur1 = randint(10, 200)
-            ran1 = randint(2,9)
+            ran1 = randint(1,9)
             # рандомные координаты
             penup()
             goto(randint(-250, 250), randint(-250, 250))
             pendown()
+            if ran1 == 1:
+                 amogus()
             if ran1 == 2:
                 # звезда
                 begin_fill()
@@ -536,7 +599,7 @@ def timer():
         print("Неправильное значение!")
 
 def raznoe():
-    ipt1 = int(input("1 - Интересный узор\n2 - AMOGUS\nВыберите что-нибудь: "))
+    ipt1 = int(input("1 - Интересный узор\n2 - AMOGUS\n3 - Бенчмарк\nВыберите что-нибудь: "))
     if ipt1 == 1:
         try:
             hideturtle()
@@ -551,73 +614,17 @@ def raznoe():
         except Exception:
             print("Закрыто")
     elif ipt1 == 2:
-        pensize(30)
-        fillcolor("red")
-        begin_fill()
-        right(90)
-        forward(50)
-        right(180)
-        circle(40, -180)
-        right(180)
-        forward(200)
-        right(180)
-        circle(100, -180)
-        backward(20)
-        left(15)
-        circle(500, -20)
-        backward(20)
-        circle(40, -180)
-        left(7)
-        backward(50)
-        up()
-        left(90)
-        forward(10)
-        right(90)
-        down()
-        right(240)
-        circle(50, -70)
-        end_fill()
-        up()
-        right(230)
-        forward(100)
-        left(90)
-        forward(20)
-        right(90)
-        down()
-        fillcolor('skyblue')
-        begin_fill()
-        right(150)
-        circle(90, -55)
-        right(180)
-        forward(1)
-        right(180)
-        circle(10, -65)
-        right(180)
-        forward(110)
-        right(180)
-        circle(50, -190)
-        right(170)
-        forward(80)
-        right(180)
-        circle(45, -30)
-        end_fill()
-        up()
-        right(60)
-        forward(100)
-        right(90)
-        forward(75)
-        fillcolor('skyblue')
-        begin_fill()
-        down()
-        forward(30)
-        right(255)
-        circle(300, -30)
-        right(260)
-        forward(30)
-        end_fill()
+        amogus()
+    elif ipt1 == 3:
+         bench()
     else:
         print("дУ ю СпИк ИнГлИш?!!?")
-
+def bench():
+     input("Для начала теста нажмите Enter: ")
+     time_st = time()
+     sleep(5)
+     time_end = time()
+     print("Результат теста:", (time_end - time_st) - 5, "сек. время вычислений")
 def weather():
     print("Команда полностью написана через ChatGPT")
     city = input("Введите название города: ")
@@ -710,6 +717,8 @@ def ping():
 
 def changelog():
     print("\nЛист обновлений!\n")
+    print("3.1.6 - 09.11.23")
+    print("Обновление, аМоГуС в PaintGPT")
     print("3.1.5.9 - 09.11.23")
     print("Починил то что сломал(кошк)")
     print("3.1.5.8 - 07.11.23")

@@ -7,8 +7,9 @@ try:
         if config['updates_enabled'] == True:
             checkForUpdates()
     except Exception as e:
-        print("Произошла ошибка:")
-        print(traceback.format_exc())
+        per1 = input("Произошла ошибка:( показать её?").lower
+        if per1 == "y":
+            print(traceback.format_exc())
     prt()
     ipt = int(input("Что вы хотите сделать? (Введите 0 или Ctrl+C для выхода): "))
     while ipt != 0:
