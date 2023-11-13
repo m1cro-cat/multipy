@@ -1,20 +1,10 @@
 from functions import *
 try:
-    try:
-        config_file = 'config.json'
-        with open(config_file) as f:
-            config = json.load(f)
-        if config['updates_enabled'] == True:
-            checkForUpdates()
-    except Exception as e:
-        per1 = input("Произошла ошибка:( показать её?").lower
-        if per1 == "y":
-            print(traceback.format_exc())
     prt()
     ipt = int(input("Что вы хотите сделать? (Введите 0 или Ctrl+C для выхода): "))
     while ipt != 0:
         if ipt == 1:
-            paintgpt()
+            lite()
         elif ipt == 2:
             info()
         elif ipt == 3:
@@ -40,12 +30,10 @@ try:
         elif ipt == 13:
             length()
         elif ipt == 14:
-            main_beta.beta()
-        elif ipt == 15:
             ping()
+        elif ipt == 15:
+            lite()
         elif ipt == 16:
-            miscMenu()
-        elif ipt == 17:
             convertor()
         else: 
             print("???")

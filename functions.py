@@ -1,176 +1,16 @@
 current_version = "3.1.6"
-release_type = "stable"
-version_date = "09.11.23"
-config_file = 'config.json'
+release_type = "lite"
+version_date = "13.11.23"
 
 from random import *
 from time import *
-from turtle import *
 import os
-import sys
 import base64
 import requests
-import shutil
-import main_beta
-import json
-import traceback
-
-def amogus():
-            speed(15)
-            color1 = (randint(0, 255), randint(0, 255), randint(0, 255))
-            color2 = (randint(0, 255), randint(0, 255), randint(0, 255))
-            pensize(30)
-            fillcolor(color1)
-            begin_fill()
-            right(90)
-            forward(50)
-            right(180)
-            circle(40, -180)
-            right(180)
-            forward(200)
-            right(180)
-            circle(100, -180)
-            backward(20)
-            left(15)
-            circle(500, -20)
-            backward(20)
-            circle(40, -180)
-            left(7)
-            backward(50)
-            up()
-            left(90)
-            forward(10)
-            right(90)
-            down()
-            right(240)
-            circle(50, -70)
-            end_fill()
-            up()
-            right(230)
-            forward(100)
-            left(90)
-            forward(20)
-            right(90)
-            down()
-            fillcolor(color2)
-            begin_fill()
-            right(150)
-            circle(90, -55)
-            right(180)
-            forward(1)
-            right(180)
-            circle(10, -65)
-            right(180)
-            forward(110)
-            right(180)
-            circle(50, -190)
-            right(170)
-            forward(80)
-            right(180)
-            circle(45, -30)
-            end_fill()
-            up()
-            right(60)
-            forward(100)
-            right(90)
-            forward(75)
-            fillcolor(color2)
-            begin_fill()
-            down()
-            forward(30)
-            right(255)
-            circle(300, -30)
-            right(260)
-            forward(30)
-            end_fill()
-def toggleUpdates():
-
-    if os.path.exists(config_file):
-        with open(config_file) as f:
-            config = json.load(f)
-    else:
-        config = {
-            'updates_enabled': True
-        }
-
-    if config['updates_enabled'] == True:
-        update_state = "включена"
-    elif config['updates_enabled'] == False:
-        update_state = "выключена"
-    choice = input(f"1 / 0 - вкл/выкл автоматическую проверку обновлений\nСейчас автопроверка обновлений {update_state}.\nВыберите опцию: ")
-    
-    if choice == '1':
-        print("Обновления включены")
-        config['updates_enabled'] = True
-    elif choice == '0':
-        print("Обновления отключены")
-        config['updates_enabled'] = False
-
-    with open(config_file, 'w') as f:
-        json.dump(config, f)
-
-if __name__ == '__main__':
-    
-    toggleUpdates()
-    
-    # Check config setting
-    if os.path.exists(config_file):
-        with open(config_file) as f:
-            config = json.load(f)
-            if config['updates_enabled']:
-                print("Обновления включены")
-                # call update code
-            else:
-                print("Обновления отключены")
-    else:
-        print("Обновления включены по умолчанию")
-
-def miscMenu():
-	try:
-		while True:
-			choice = int(input("\n1 - проверить обновления\n2 - настроить проверку обновлений\n3 - переключить ветку обновлений\n4 - скачать последную версию\n5 - выйти в главное меню\nВыберите опцию: "))
-			if choice == 1:
-				checkForUpdates()
-			elif choice == 2:
-				toggleUpdates()
-			elif choice == 3:
-				switchBranch()
-			elif choice == 4:
-				dlLastVer()
-			elif choice == 5:
-				break
-			else:
-				print("Такой опции не существует")
-	except ValueError:
-		print("Неправильное значение! Должно быть от 1 до 5!")
-
-def dlLastVer():
-	if os.path.exists(config_file):
-		with open(config_file) as f:
-			config = json.load(f)
-	branch = config['update_branch']
-	version_url = f'https://raw.githubusercontent.com/m1cro-cat/multipy/{branch}/latest_version.txt'
-	version_response = requests.get(version_url)
-
-	if version_response.status_code == 200:
-		latest_version = version_response.text.strip()
-		zip_url = f'https://github.com/m1cro-cat/multipy/archive/{branch}.zip'
-		save_file = f'mpy-{latest_version}-{branch}.zip'
-		save_path = os.path.join(os.getcwd(), save_file)
-
-		response = requests.get(zip_url)
-		with open(save_path, 'wb') as f:
-			f.write(response.content)
-
-		print(f"Новая версия сохранена по пути:\n{save_path}")
-		return save_path
-
-	else:
-		print("Произошла ошибка при скачивании. Простите позязя :(")
-		return None
-
+def lite():
+    print("Эта функция недоступна в lite версии. Скачайте полную версию!")
 def prt():
-    print(" <<MultiPy>> \n 1 - PaintGPT \n 2 - О MultiPy \n 3 - Что нового? \n 4 - Игра КНБ \n 5 - Игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Разное \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длину строки (len) \n 14 - Beta \n 15 - Ping \n 16 - Обновления \n 17 - Конвертор(alpha)")
+    print(" <<MultiPy Lite>> \n 1 - PaintGPT (недоступно в lite) \n 2 - О MultiPy \n 3 - Что нового? \n 4 - Игра КНБ \n 5 - Игра Угадай число \n 6 - Секундомер \n 7 - Таймер обратного отсчета \n 8 - Разное \n 9 - Бросить кубик \n 10 - Погода \n 11 - Генератор \n 12 - Base64 \n 13 - Узнать длину строки (len) \n 14 - Ping \n 15 - Обновления (недоступно в lite) \n 16 - Конвертор(alpha)")
 def convertor():
             ipt = input("Введите из чего в что вы хотите перевести \nДоступно: все от мм до км, все от байтов до тб\nНапример: байты - тб, метры - см\n(введите 0 для выхода): ").lower()
             while ipt != "0":
@@ -239,7 +79,6 @@ def convertor():
                 elif ipt == "км - метры":
                     per1 = int(input("Введите км: "))
                     print("Результат:", per1 * 10)
-
                 # байты
                 if ipt == "байты - кб":
                     per1 = int(input("Введите байты: ")) 
@@ -253,282 +92,58 @@ def convertor():
                 elif ipt == "байты - тб":
                     per1 = int(input("Введите байты: "))
                     print("Результат:", per1 / 1024**4)
-
                 # кб
                 elif ipt == "кб - байты":
                     per1 = int(input("Введите кб: "))
                     print("Результат:", per1 * 1024)
-
                 elif ipt == "кб - мб":
                     per1 = int(input("Введите кб: "))
                     print("Результат:", per1 / 1024)
-
                 elif ipt == "кб - гб":
                     per1 = int(input("Введите кб: "))
                     print("Результат:", per1 / 1024**2)
-
                 elif ipt == "кб - тб":
                     per1 = int(input("Введите кб: "))
                     print("Результат:", per1 / 1024**3)
-
-
                 # мб  
                 elif ipt == "мб - байты":
                     per1 = int(input("Введите мб: "))
                     print("Результат:", per1 * 1024**2)
-
                 elif ipt == "мб - кб":
                     per1 = int(input("Введите мб: "))
                     print("Результат:", per1 * 1024)
-
                 elif ipt == "мб - гб":
                     per1 = int(input("Введите мб: "))
                     print("Результат:", per1 / 1024)
-
                 elif ipt == "мб - тб":
                     per1 = int(input("Введите мб: "))
                     print("Результат:", per1 / 1024**2)
-
-
                 # гб
                 elif ipt == "гб - байты":
                     per1 = int(input("Введите гб: "))
                     print("Результат:", per1 * 1024**3)
-
                 elif ipt == "гб - кб":
                     per1 = int(input("Введите гб: "))
                     print("Результат:", per1 * 1024**2) 
-
                 elif ipt == "гб - мб":
                     per1 = int(input("Введите гб: "))
                     print("Результат:", per1 * 1024)
-
                 elif ipt == "гб - тб":
                     per1 = int(input("Введите гб: "))
                     print("Результат:", per1 / 1024)
-
-
                 # тб
                 elif ipt == "тб - байты":
                     per1 = int(input("Введите тб: "))
                     print("Результат:", per1 * 1024**4)
-
                 elif ipt == "тб - кб":
                     per1 = int(input("Введите тб: "))
                     print("Результат:", per1 * 1024**3)
-
                 elif ipt == "тб - мб":
                     per1 = int(input("Введите тб: ")) 
                     print("Результат:", per1 * 1024**2)
-
                 elif ipt == "тб - гб":
                     per1 = int(input("Введите тб: "))
                     print("Результат:", per1 * 1024)
-
-def updateProgram():
-	if os.path.exists(config_file):
-		with open(config_file) as f:
-			config = json.load(f)
-	branch = config['update_branch']
-	url = f'https://github.com/m1cro-cat/multipy/archive/{branch}.zip'
-	update_zip = os.path.join('cache', 'update.zip')
-	os.makedirs('cache', exist_ok=True)
-	response = requests.get(url)
-	with open(update_zip, 'wb') as f:
-		f.write(response.content)
-	shutil.unpack_archive(update_zip, 'update')
-	os.remove(update_zip)
-	src_dir = os.path.join('update', f'multipy-{branch}')
-	dest_dir = os.path.dirname(os.path.abspath(__file__))
-	for src_name in os.listdir(src_dir):
-		src_path = os.path.join(src_dir, src_name)
-		dest_path = os.path.join(dest_dir, src_name)
-		if os.path.exists(dest_path):
-			os.remove(dest_path)
-		shutil.move(src_path, dest_dir)
-	shutil.rmtree(os.path.join('update'))
-	shutil.rmtree(os.path.join('cache'))
-	print("Обновление завершено успешно!\n")
-	args = [sys.executable] + sys.argv
-	os.execv(sys.executable, args)
-
-def checkForUpdates():
-	if os.path.exists(config_file):
-		with open(config_file) as f:
-			config = json.load(f)
-	branch = config['update_branch']
-	print("Проверка обновлений.. ")
-	cache_dir = os.path.join('cache')
-	if os.path.isdir(cache_dir):
-		shutil.rmtree(cache_dir)
-	cache_folder = 'cache'
-	if not os.path.exists(cache_folder):
-		os.mkdir(cache_folder)
-	latest_version_url = f'https://raw.githubusercontent.com/m1cro-cat/multipy/{branch}/latest_version.txt'
-	latest_version_path = os.path.join(cache_folder, 'latest_version.txt')
-	if not os.path.exists(latest_version_path):
-		response = requests.get(latest_version_url)
-		with open(latest_version_path, 'w') as f:
-			f.write(response.text)
-	with open(latest_version_path) as f:
-		latest_version = f.read().strip()
-	if latest_version > current_version:
-		print(f"Доступна новая версия {latest_version} (текущая версия: {current_version})")
-		update = input("Хотите обновиться? (y/n): ")
-		if update.lower() == 'y' or update.lower() == 'д':
-			print("Обновляемся...")
-			updateProgram()
-		elif update.lower() == 'n' or update.lower() == 'н':
-			sleep(0.3)
-			print("Обновление отменено\n")
-			shutil.rmtree(os.path.join('cache'))
-	else:
-		print("Обновлений не найдено!\n")
-		shutil.rmtree(os.path.join('cache'))
-
-def switchBranch():
-	while True:
-		if os.path.exists(config_file):
-			with open(config_file) as f:
-				config = json.load(f)
-		print(f"Сейчас используется ветка {config['update_branch']} для обновлений.\n")
-		print("1 - переключиться на beta")
-		print("2 - переключиться на main")
-		print("3 - в главное меню")
-		choice = input("Выберите опцию: ")
-		if choice == '1':
-			config['update_branch'] = "beta"
-			with open(config_file, 'w') as f:
-				json.dump(config, f)
-		elif choice == '2':
-			config['update_branch'] = "main"
-			with open(config_file, 'w') as f:
-				json.dump(config, f)
-		elif choice == '3':
-			break
-		print(f"Вы переключились на ветку {config['update_branch']}.")
-
-def paintgpt():
-    try:
-        def paint():
-            # задаю цвет
-            colormode(255)
-            color1 = (randint(0, 255), randint(0, 255), randint(0, 255))
-            color2 = (randint(0, 255), randint(0, 255), randint(0, 255))
-            color(color1, color2)
-            #скорость
-            speed(10)
-            # генерация 
-            pensize(randint(4, 10))
-            cur1 = randint(10, 200)
-            ran1 = randint(1,9)
-            # рандомные координаты
-            penup()
-            goto(randint(-250, 250), randint(-250, 250))
-            pendown()
-            if ran1 == 1:
-                 amogus()
-            if ran1 == 2:
-                # звезда
-                begin_fill()
-                for i in range(5):
-                    forward(150)
-                    left(144)
-                end_fill()
-            if ran1 == 3:
-                # квадрат 1
-                if randint(1,2) == 1:
-                    begin_fill()
-                    for i in range(4):
-                        forward(100)
-                        left(90)
-                    end_fill()
-                else:
-                    for i in range(4):
-                        forward(100)
-                        left(90)
-            if ran1 == 4:
-                # круг 2
-                if randint(1,2) == 1:
-                    begin_fill()
-                    circle(cur1)
-                    end_fill()
-                else:
-                    circle(cur1)
-            if ran1 == 5:
-                # треугольник
-                if randint(1,2) == 1:
-                    begin_fill()
-                    for i in range(3):
-                        forward(cur1)
-                        left(120)
-                    end_fill()
-                else:
-                    for i in range(3):
-                        forward(cur1)
-                        left(120)
-            if ran1 == 6:
-                # спираль
-                per11 = 0
-                for i in range(randint(10, 36)):
-                    forward(per11)  
-                    per11 += 5
-                    left(90) 
-            if ran1 == 7:
-                # пончик
-                speed(15)
-                r = randint(0, 255)
-                g = randint(0, 255)
-                b = randint(0, 255)
-                color2 = (r, g, b)
-                for i in range(18):
-                    color(color1)
-                    forward(100)
-                    left(120)
-                    left(10)
-                    color(color2)
-                    forward(100)
-                    left(120)
-                    left(10) 
-                    speed(10)
-            if ran1 == 8:
-                # ромб
-                if randint(1,2) == 1:
-                    ran2 = randint(50,150)
-                    left(randint(0,360))
-                    for i in range(2):
-                        left(45)
-                        forward(ran2)
-                        left(135)
-                        forward(ran2)
-                else:
-                    begin_fill()
-                    ran2 = randint(50,150)
-                    left(randint(0,360))
-                    for i in range(2):
-                        left(45)
-                        forward(ran2)
-                        left(135)
-                        forward(ran2)
-                    end_fill()
-            if ran1 == 9:
-                # шестиугольник
-                ran2 = randint(50,150)
-                if randint(1,2) == 1:
-                    for i in range(6):
-                        forward(ran2)
-                        left(60)
-                else:
-                    ran2 = randint(50,150)
-                    begin_fill()
-                    for i in range(6):
-                        forward(ran2)
-                        left(60)
-                    end_fill()
-        while True:
-            paint()
-    except Exception:
-                print("PaintGPT закрыт")
 
 def info():
     print(f"\nПрограмма MultiPy.\nВерсия {current_version} {release_type} от {version_date}.\nНекоторые пункты взяты из интернета, я не писал их сам.\nТакже ОГРОМНОЕ спасибо MystieHum и Claude за помощь в некоторых командах и моментах")
@@ -599,24 +214,13 @@ def timer():
         print("Неправильное значение!")
 
 def raznoe():
-    ipt1 = int(input("1 - Интересный узор\n2 - AMOGUS\n3 - Бенчмарк\nВыберите что-нибудь: "))
+    ipt1 = int(input("1 - Интересный узор (недоступно в lite)\n2 - AMOGUS (недоступно в lite)\n3 - Бенчмарк\nВыберите что-нибудь: "))
     if ipt1 == 1:
-        try:
-            hideturtle()
-            per2 = 10
-            per1 = 1
-            while True:
-                speed(per2)
-                forward(per1)
-                left(90)
-                per1 += 1
-                per2 += 1
-        except Exception:
-            print("Закрыто")
+        lite()
     elif ipt1 == 2:
-        amogus()
+        lite()
     elif ipt1 == 3:
-         bench()
+        bench()
     else:
         print("дУ ю СпИк ИнГлИш?!!?")
 def bench():
@@ -767,19 +371,6 @@ def changelog():
     print("Переделка некоторых функций, и добавление новых\n")
     print("2.0.0 - 28.07.23")
     print("Полная переделка кода, убрал лишние функции, которые уже не актуальны. Также добавил кучу всего!\n")
-    print("1.5.0 - 16.07.23")
-    print("Переименовал в projectpb \nДобавил много функций\n")
-    print("1.4.0 - 13.07.23")
-    print("Сделал удобнее управление \nПеределал работу погоды \nДобавил таймер и секундомер \nДобавил игру КНБ\n")
-    print("1.3.1 - 12.07.23")
-    print("Добавил имена комментаторов!\n")
-    print("1.3 - 12.07.23")
-    print("Добавил функцию DevSettingsOn (тест всего разного))\n")
-    print("1.2 - 05.07.23")
-    print("Несколько небольших изменений\n")
-    print("1.1 - 04.07.23")
-    print("Удален пункт мерч, как так он никому не нужен")
-    print("Добавлены новые функции\n")
 
 def knb():
     response = int(input("Камень(1), ножницы(2), или бумага?(3) (0 - выход, если вы обиделись введите 4): "))
